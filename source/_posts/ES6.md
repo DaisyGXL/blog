@@ -1,6 +1,7 @@
 title: ES6项目构建
 date: 2017-08-28
-categories: DaisyXL
+categories: ES6
+summary_img: https://p0.meituan.net/dpnewvc/98edd093d4e832cd1c7bcfdfd2f699d8277917.png
 tags:
 - javascript
 - ES6

@@ -1,6 +1,7 @@
 title: git-pages
 date: 2017-09-14
-categories: DaisyXL
+categories: git
+summary_img: https://p0.meituan.net/dpnewvc/841fe2f06898fce64c7fb18c26151e83293936.png
 tags:
 - blog
 - 电子书

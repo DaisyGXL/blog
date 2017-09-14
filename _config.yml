@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Daisy's Blog
+title: Daisy
 subtitle:
 keyworks: Web, 前端, ES6, angular
-description: Daisy's blog, 个人技术博客
+description: 众中少言，无事早归
 author: Daisy
 language: zh-Hans
 timezone:
@@ -76,3 +76,9 @@ deploy:
 # Social links
 social:
   GitHub: https://github.com/xgfe
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
