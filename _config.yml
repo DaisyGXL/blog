@@ -3,16 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Daisy's Blog
 subtitle:
-description:
-author: John Doe
-language:
+keyworks: Web, 前端, ES6, angular
+description: Daisy's blog, 个人技术博客
+author: Daisy
+language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://daisygxl.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -25,7 +26,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: uploads/**
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -42,15 +43,6 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
-# Home page setting
-# path: Root path for your blogs index page. (default = '')
-# per_page: Posts displayed per page. (0 = disable pagination)
-# order_by: Posts order. (Order by date descending by default)
-index_generator:
-  path: ''
-  per_page: 10
-  order_by: -date
   
 # Category & Tag
 default_category: uncategorized
@@ -77,5 +69,10 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:github
-  repo:https://github.com/DaisyGXL/blog.git
+  type: git
+  repo: https://github.com/DaisyGXL/DaisyGXL.github.io.git
+  branch: master
+
+# Social links
+social:
+  GitHub: https://github.com/xgfe
