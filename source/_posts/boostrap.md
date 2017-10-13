@@ -6,7 +6,7 @@ tags:
 
 ---
 
-本文主要介绍了Boostrap这个简洁、直观、强悍的前端开发框架，搭建Bootstrap开发环境并进行实践。
+本文主要介绍了Boostrap的全局样式和常用组件。
 
 <!-- more -->
 # Bootstrap的特性
