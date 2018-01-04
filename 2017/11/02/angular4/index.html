@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Angular4 | Daisy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文主要介绍了angular4的用法和新特性。">
+<meta name="keywords" content="javascript,angular">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Angular4">
+<meta property="og:url" content="http://daisygxl.github.io/2017/11/02/angular4/index.html">
+<meta property="og:site_name" content="Daisy">
+<meta property="og:description" content="本文主要介绍了angular4的用法和新特性。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-04T03:21:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Angular4">
+<meta name="twitter:description" content="本文主要介绍了angular4的用法和新特性。">
+  
+    <link rel="alternate" href="/atom.xml" title="Daisy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Daisy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://daisygxl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-angular4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/02/angular4/" class="article-date">
+  <time datetime="2017-11-01T16:00:00.000Z" itemprop="datePublished">2017-11-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/angular/">angular</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Angular4
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文主要介绍了angular4的用法和新特性。</p>
+<a id="more"></a>
+<h1 id="Angular-与-AngularJS-有什么区别"><a href="#Angular-与-AngularJS-有什么区别" class="headerlink" title="Angular 与 AngularJS 有什么区别"></a>Angular 与 AngularJS 有什么区别</h1><ul>
+<li>不再有Controller和 Scope</li>
+<li>更好的组件化及代码npm复用</li>
+<li>更好的移动端支持</li>
+<li>引入了 RxJS 与 Observable</li>
+<li>引入了 Zone.js，提供更加智能的变化检测</li>
+</ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>跨平台</li>
+<li>高性能</li>
+<li>多种IDE支持</li>
+</ul>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><h2 id="基础要求"><a href="#基础要求" class="headerlink" title="基础要求"></a>基础要求</h2><ul>
+<li>Node.js</li>
+<li>Git</li>
+</ul>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><ul>
+<li><p>安装 Angular CLI</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g @angular/cli</div></pre></td></tr></table></figure>
+</li>
+<li><p>检测 Angular CLI 是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng --version</div></pre></td></tr></table></figure>
+</li>
+<li><p>创建新的项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ng new PROJECT-NAME</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个CLI为我们创建了第一个Angular组件。 它就是名叫<code>app-root</code>的根组件。 你可以在<code>./src/app/app.component.ts</code>目录下找到它。</p>
+<ul>
+<li>启动本地服务器<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd PROJECT-NAME</div><div class="line">ng serve</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用–open（或-o）参数可以自动打开浏览器并访问<a href="http://localhost:4200/。" target="_blank" rel="external">http://localhost:4200/。</a></p>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="显示数据"><a href="#显示数据" class="headerlink" title="显示数据"></a>显示数据</h2><p><strong>插值表达式</strong><br>在 Angular 中，我们可以使用插值语法实现数据绑定。Angular 自动从组件中提取属性的值，并且把这些值插入浏览器中。当这些属性发生变化时，Angular 就会自动刷新显示。Angular 先对它求值，再把它转换成字符串。<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"></div><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'app-root'</span>,</div><div class="line">  template: <span class="string">`</span></div><div class="line"><span class="string">    &lt;h2&gt;大家好，我是&#123;&#123;name&#125;&#125;&lt;/h2&gt;</span></div><div class="line"><span class="string">    &lt;p&gt;我来自&lt;strong&gt;&#123;&#123;address.province&#125;&#125;&lt;/strong&gt;省,</span></div><div class="line"><span class="string">      &lt;strong&gt;&#123;&#123;address.city&#125;&#125;&lt;/strong&gt;市</span></div><div class="line"><span class="string">    &lt;/p&gt;</span></div><div class="line"><span class="string">    &lt;p&gt;&#123;&#123;address|json&#125;&#125;&lt;/p&gt;</span></div><div class="line"><span class="string">  `</span>,</div><div class="line">  styleUrls: [<span class="string">'./app.component.css'</span>]</div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppComponent &#123;</div><div class="line">  name = <span class="string">'Semlinker'</span>;</div><div class="line">  address = &#123;</div><div class="line">    province: <span class="string">'福建'</span>,</div><div class="line">    city: <span class="string">'厦门'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>值得一提的是，这里使用了 Angular 内置的 json 管道。<br><code>@Component</code>装饰器中指定的 CSS 选择器<code>selector</code>，它指定了一个叫<code>app-root</code>的元素。 该元素是<code>index.html</code>的<code>body</code>里的占位符。当通过<code>main.ts</code>中的<code>AppComponent</code>类启动时，Angular 在<code>index.html</code>中查找一个<code>my-app</code>元素， 然后实例化一个<code>AppComponent</code>，并将其渲染到<code>my-app</code>标签中。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-root</span>&gt;</span><span class="tag">&lt;/<span class="name">app-root</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>插值表达式可以把计算后的字符串插入到 HTML 元素标签内的文本或对标签的属性进行赋值。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span></div><div class="line">  &#123;&#123;title&#125;&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;heroImageUrl&#125;&#125;"</span> <span class="attr">style</span>=<span class="string">"height:30px"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>根据json管道补充一下管道操作符（|）：<br>在绑定之前，表达式的结果可能需要一些转换。例如，可能希望把数字显示成金额、强制文本变成大写，或者过滤列表以及进行排序。</p>
+<h2 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h2><p><strong>模板表达式</strong><br>模板表达式产生一个值。 Angular 执行这个表达式，并把它赋值给绑定目标的属性，这个绑定目标可能是 HTML 元素、组件或指令。<br>JavaScript 中那些具有或可能引发副作用的表达式是被禁止的，包括：</p>
+<ul>
+<li>赋值 (=, +=, -=, …)</li>
+<li>new运算符</li>
+<li>使用;或,的链式表达式</li>
+<li>自增或自减操作符 (++和–)</li>
+</ul>
+<p>表达式中的上下文变量是由模板变量、指令的上下文变量（如果有）和组件的成员叠加而成的。 如果我们要引用的变量名存在于一个以上的命名空间中，那么，<strong>模板变量是最优先的，其次是指令的上下文变量，最后是组件的成员</strong>。</p>
+<p><strong>模板语句</strong><br>模板语句用来响应由绑定目标（如 HTML 元素、组件或指令）触发的事件。它出现在=号右侧的引号中，就像这样：<code>(event)=”statement”</code>。<br>某些 JavaScript 语法是不允许的：</p>
+<ul>
+<li>new运算符</li>
+<li>自增和自减运算符：++和–</li>
+<li>操作并赋值，例如+=和-=</li>
+<li>位操作符|和&amp;</li>
+<li>模板表达式运算符</li>
+</ul>
+<p>语句上下文可以引用模板自身上下文中的属性。 在下面的例子中，就把模板的<code>$event</code>对象、模板输入变量 <code>(let hero)</code>和模板引用变量 <code>(#heroForm)</code>传给了组件中的一个事件处理器方法。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">"onSave($event)"</span>&gt;</span>Save<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> *<span class="attr">ngFor</span>=<span class="string">"let hero of heroes"</span> (<span class="attr">click</span>)=<span class="string">"deleteHero(hero)"</span>&gt;</span>&#123;&#123;hero.name&#125;&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> #<span class="attr">heroForm</span> (<span class="attr">ngSubmit</span>)=<span class="string">"onSubmit(heroForm)"</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>数据绑定和数据方向</strong></p>
+<ul>
+<li>1.单向（数据源-&gt;视图）： 插值表达式 Property Attribute 类 样式<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;expression&#125;&#125;</div><div class="line">[target]=&quot;expression&quot;</div><div class="line">bind-target=&quot;expression&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注1.方括号表示要计算的模板表达式，不加方括号，Angular会将表达式视为字符串，而不会计算这个字符串。<br>注2.当要渲染的数据类型是字符串时，倾向于使用插值表达式，否则必须使用属性绑定。<br>注3.当元素没有属性可绑的时候，就必须使用 attribute 绑定。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">1</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!--  expression calculates colspan=2 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span> [<span class="attr">attr.colspan</span>]=<span class="string">"1 + 1"</span>&gt;</span>One-Two<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="comment">&lt;!-- ERROR: There is no `colspan` property to set!</span></div><div class="line"><span class="comment">    &lt;tr&gt;&lt;td colspan="&#123;&#123;1 + 1&#125;&#125;"&gt;Three-Four&lt;/td&gt;&lt;/tr&gt;</span></div><div class="line"><span class="comment">  --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Five<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span>Six<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>注4.css类绑定<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 当badCurly有值的时候，整个class设置的内容全部被覆盖 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bad curly special"</span></span></div><div class="line"><span class="tag">     [<span class="attr">class</span>]=<span class="string">"badCurly"</span>&gt;</span>Bad curly<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 模板表达式的值为真时，添加这个类，否则移除 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">class.special</span>]=<span class="string">"isSpecial"</span>&gt;</span>The class binding is special<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"special"</span></span></div><div class="line"><span class="tag">     [<span class="attr">class.special</span>]=<span class="string">"!isSpecial"</span>&gt;</span>This one is not so special<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>注5.style样式绑定<br>样式绑定的语法与属性绑定类似。 但方括号中的部分不是元素的属性名，而由style前缀，一个点和 CSS 样式的属性名组成。 形如：<code>[style.style-property]</code>。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> [<span class="attr">style.font-size.em</span>]=<span class="string">"isSpecial ? 3 : 1"</span> &gt;</span>Big<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> [<span class="attr">style.font-size.</span>%]=<span class="string">"!isSpecial ? 150 : 50"</span> &gt;</span>Small<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>2.单向（视图-&gt;数据源）： 事件<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(targrt)=&quot;statement&quot;</div><div class="line">on-target=&quot;statement&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>事件对象的形态取决于目标事件。如果目标事件是原生 DOM 元素事件， $event就是 DOM事件对象，它有像target和target.value这样的属性。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> [<span class="attr">value</span>]=<span class="string">"currentHero.name"</span></span></div><div class="line"><span class="tag">       (<span class="attr">input</span>)=<span class="string">"currentHero.name=$event.target.value"</span> &gt;</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>3.双向<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[(target)]=&quot;expression&quot;</div><div class="line">bindon-target=&quot;expression&quot;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>在 Angular 的世界中，attribute 唯一的作用是用来初始化元素和指令的状态。 当进行数据绑定时，只是在与元素和指令的 property 和事件打交道，而 attribute 就完全靠边站了。</strong><br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component, EventEmitter, Input, Output &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"> </div><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'app-sizer'</span>,</div><div class="line">  template: <span class="string">`</span></div><div class="line"><span class="string">  &lt;div&gt;</span></div><div class="line"><span class="string">    &lt;button (click)="dec()" title="smaller"&gt;-&lt;/button&gt;</span></div><div class="line"><span class="string">    &lt;button (click)="inc()" title="bigger"&gt;+&lt;/button&gt;</span></div><div class="line"><span class="string">    &lt;label [style.font-size.px]="size"&gt;FontSize: &#123;&#123;size&#125;&#125;px&lt;/label&gt;</span></div><div class="line"><span class="string">  &lt;/div&gt;`</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> SizerComponent &#123;</div><div class="line">  <span class="meta">@Input</span>()  size: <span class="built_in">number</span> | <span class="built_in">string</span>;</div><div class="line">  <span class="meta">@Output</span>() sizeChange = <span class="keyword">new</span> EventEmitter&lt;<span class="built_in">number</span>&gt;();</div><div class="line"> </div><div class="line">  dec() &#123; <span class="keyword">this</span>.resize(<span class="number">-1</span>); &#125;</div><div class="line">  inc() &#123; <span class="keyword">this</span>.resize(+<span class="number">1</span>); &#125;</div><div class="line"> </div><div class="line">  resize(delta: <span class="built_in">number</span>) &#123;</div><div class="line">    <span class="keyword">this</span>.size = <span class="built_in">Math</span>.min(<span class="number">40</span>, <span class="built_in">Math</span>.max(<span class="number">8</span>, +<span class="keyword">this</span>.size + delta));</div><div class="line">    <span class="keyword">this</span>.sizeChange.emit(<span class="keyword">this</span>.size);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">app-sizer</span> [(<span class="attr">size</span>)]=<span class="string">"fontSizePx"</span>&gt;</span><span class="tag">&lt;/<span class="name">app-sizer</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">style.font-size.px</span>]=<span class="string">"fontSizePx"</span>&gt;</span>Resizable Text<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>内置指令</strong></p>
+<ol>
+<li>内置属性型指令</li>
+</ol>
+<ul>
+<li>NgClass - 添加或移除一组CSS类<br>可以把ngClass绑定到一个<code> key:value</code> 形式的控制对象。这个对象中的每个 key 都是一个 CSS 类名，如果它的 value 是true，这个类就会被加上，否则就会被移除。<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">currentClasses: &#123;&#125;;</div><div class="line">setCurrentClasses() &#123;</div><div class="line">  <span class="comment">// CSS classes: added/removed per current state of component properties</span></div><div class="line">  <span class="keyword">this</span>.currentClasses =  &#123;</div><div class="line">    <span class="string">'saveable'</span>: <span class="keyword">this</span>.canSave,</div><div class="line">    <span class="string">'modified'</span>: !<span class="keyword">this</span>.isUnchanged,</div><div class="line">    <span class="string">'special'</span>:  <span class="keyword">this</span>.isSpecial</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngClass</span>]=<span class="string">"currentClasses"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>NgStyle - 添加或移除一组CSS样式<br>NgStyle需要绑定到一个<code> key:value</code>控制对象。 对象的每个 key 是样式名，它的 value 是能用于这个样式的任何值。<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">currentStyles: &#123;&#125;;</div><div class="line">setCurrentStyles() &#123;</div><div class="line">  <span class="comment">// CSS styles: set per current state of component properties</span></div><div class="line">  <span class="keyword">this</span>.currentStyles = &#123;</div><div class="line">    <span class="string">'font-style'</span>:  <span class="keyword">this</span>.canSave      ? <span class="string">'italic'</span> : <span class="string">'normal'</span>,</div><div class="line">    <span class="string">'font-weight'</span>: !<span class="keyword">this</span>.isUnchanged ? <span class="string">'bold'</span>   : <span class="string">'normal'</span>,</div><div class="line">    <span class="string">'font-size'</span>:   <span class="keyword">this</span>.isSpecial    ? <span class="string">'24px'</span>   : <span class="string">'12px'</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngStyle</span>]=<span class="string">"currentStyles"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>NgModel - 双向绑定到HTML表单元素<br><strong>在使用ngModel指令进行双向数据绑定之前，我们必须导入FormsModule并把它添加到Angular模块的imports列表中。</strong></li>
+</ul>
+<p>2.内置结构型指令</p>
+<ul>
+<li><p>NgIf - 根据条件把一个元素添加到DOM中或从DOM移除</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">app-hero-detail</span> *<span class="attr">ngIf</span>=<span class="string">"isActive"</span>&gt;</span><span class="tag">&lt;/<span class="name">app-hero-detail</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>NgSwitch - 一组指令，用于切换一组视图</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> [<span class="attr">ngSwitch</span>]=<span class="string">"currentHero.emotion"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-happy-hero</span>    *<span class="attr">ngSwitchCase</span>=<span class="string">"'happy'"</span>    [<span class="attr">hero</span>]=<span class="string">"currentHero"</span>&gt;</span><span class="tag">&lt;/<span class="name">app-happy-hero</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-sad-hero</span>      *<span class="attr">ngSwitchCase</span>=<span class="string">"'sad'"</span>      [<span class="attr">hero</span>]=<span class="string">"currentHero"</span>&gt;</span><span class="tag">&lt;/<span class="name">app-sad-hero</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-confused-hero</span> *<span class="attr">ngSwitchCase</span>=<span class="string">"'confused'"</span> [<span class="attr">hero</span>]=<span class="string">"currentHero"</span>&gt;</span><span class="tag">&lt;/<span class="name">app-confused-hero</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">app-unknown-hero</span>  *<span class="attr">ngSwitchDefault</span>           [<span class="attr">hero</span>]=<span class="string">"currentHero"</span>&gt;</span><span class="tag">&lt;/<span class="name">app-unknown-hero</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>NgForOf - 对列表中的每个条目重复套用同一个模板</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let hero of heroes"</span>&gt;</span>&#123;&#123;hero.name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngFor</span>=<span class="string">"let hero of heroes; let i=index"</span>&gt;</span>&#123;&#123;i + 1&#125;&#125; - &#123;&#123;hero.name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>模板引用变量（#）</strong><br>模板引用变量通常用来引用模板中的某个DOM元素。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> #<span class="attr">phone</span> <span class="attr">placeholder</span>=<span class="string">"phone number"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> (<span class="attr">click</span>)=<span class="string">"callPhone(phone.value)"</span>&gt;</span>Call<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong>输入输出属性</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">app-hero-detail</span> [<span class="attr">hero</span>]=<span class="string">"currentHero"</span> (<span class="attr">deleteRequest</span>)=<span class="string">"deleteHero($event)"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">app-hero-detail</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在HeroDetailComponent内部，这些属性被装饰器标记成了输入和输出属性。<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Input</span>()  hero: Hero;</div><div class="line"><span class="meta">@Output</span>() deleteRequest = <span class="keyword">new</span> EventEmitter&lt;Hero&gt;();</div></pre></td></tr></table></figure></p>
+<p>从HeroDetailComponent角度来看，HeroDetailComponent.hero是个输入属性， 因为数据流从模板绑定表达式流入那个属性。<br>从HeroDetailComponent角度来看，HeroDetailComponent.deleteRequest是个输出属性， 因为事件从那个属性流出，流向模板绑定语句中的处理器。</p>
+<p>为输出属性起别名：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Output</span>(<span class="string">'myClick'</span>) clicks = <span class="keyword">new</span> EventEmitter&lt;<span class="built_in">string</span>&gt;();</div></pre></td></tr></table></figure></p>
+<p><strong>模板表达式操作符</strong></p>
+<ul>
+<li>管道操作符（|）</li>
+<li><p>安全导航操作符 ( ?. ) 和空属性路径<br>Angular 安全导航操作符 (?.) 是在属性路径中保护空值的更加流畅、便利的方式。 表达式会在它遇到第一个空值的时候跳出。 显示是空的，但应用正常工作，而没有发生错误。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- No hero, no problem! --&gt;</span></div><div class="line">The null hero's name is &#123;&#123;nullHero?.name&#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>非空断言操作符（!）<br>在 Angular 编译器把你的模板转换成 TypeScript 代码时，这个操作符会防止 TypeScript 报告 “hero.name可能为null或undefined”的错误。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> *<span class="attr">ngIf</span>=<span class="string">"hero"</span>&gt;</span></div><div class="line">  The hero's name is &#123;&#123;hero!.name&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>内联 (inline)模板和模板文件</strong><br>可以使用<code>template</code>属性把它定义为内联的，或者把模板定义在一个独立的 HTML 文件中， 再通过<code>@Component</code>装饰器中的<code>templateUrl</code>属性， 在组件元数据中把它链接到组件。<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'app-home'</span>,</div><div class="line">  templateUrl: <span class="string">'./home.component.html'</span>,</div><div class="line">  styleUrls: [<span class="string">'./home.component.css'</span>]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'app-root'</span>,</div><div class="line">  template: <span class="string">`</span></div><div class="line"><span class="string">    &lt;h2&gt;大家好，我是&#123;&#123;name&#125;&#125;&lt;/h2&gt;</span></div><div class="line"><span class="string">    &lt;p&gt;我来自&lt;strong&gt;&#123;&#123;address.province&#125;&#125;&lt;/strong&gt;省,</span></div><div class="line"><span class="string">      &lt;strong&gt;&#123;&#123;address.city&#125;&#125;&lt;/strong&gt;市</span></div><div class="line"><span class="string">    &lt;/p&gt;</span></div><div class="line"><span class="string">    &lt;p&gt;&#123;&#123;address|json&#125;&#125;&lt;/p&gt;</span></div><div class="line"><span class="string">  `</span>,</div><div class="line">  styleUrls: [<span class="string">'./app.component.css'</span>]</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h1 id="组件交互"><a href="#组件交互" class="headerlink" title="组件交互"></a>组件交互</h1><p><strong>1.通过输入型绑定把数据从父组件传到子组件 @Input()，需要import入core中的Input类</strong><br><strong>2.通过setter截听输入属性值的变化</strong><br><figure class="highlight ts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; Component, Input &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</div><div class="line"> </div><div class="line"><span class="meta">@Component</span>(&#123;</div><div class="line">  selector: <span class="string">'app-name-child'</span>,</div><div class="line">  template: <span class="string">'&lt;h3&gt;"&#123;&#123;name&#125;&#125;"&lt;/h3&gt;'</span></div><div class="line">&#125;)</div><div class="line"><span class="keyword">export</span> <span class="keyword">class</span> NameChildComponent &#123;</div><div class="line">  <span class="keyword">private</span> _name = <span class="string">''</span>;</div><div class="line"> </div><div class="line">  <span class="meta">@Input</span>()</div><div class="line">  <span class="keyword">set</span> name(name: <span class="built_in">string</span>) &#123;</div><div class="line">    <span class="keyword">this</span>._name = (name &amp;&amp; name.trim()) || <span class="string">'&lt;no name set&gt;'</span>;</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="keyword">get</span> name(): <span class="built_in">string</span> &#123; <span class="keyword">return</span> <span class="keyword">this</span>._name; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>3.通过ngOnChanges()来截听输入属性值的变化</strong><br>使用OnChanges生命周期钩子接口的ngOnChanges()方法来监测输入属性值的变化并做出回应。</p>
+<p><strong>未完待续</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://daisygxl.github.io/2017/11/02/angular4/" data-id="cjc002nw30003079c1x9lzdh8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angular/">angular</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/25/mobile/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          移动端页面开发手记（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/25/nodejs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nodejs</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/boostrap/">boostrap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-mobile/">web mobile</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supertest/">supertest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电子书/">电子书</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/supertest/" style="font-size: 10px;">supertest</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/电子书/" style="font-size: 10px;">电子书</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/25/mobile/">移动端页面开发手记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/02/angular4/">Angular4</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/25/nodejs/">Nodejs</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/18/boostrap/">Bootstrap</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/gitbook/">git-pages</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Daisy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>git-pages | Daisy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文用来说明了如何从零开始基于gitpages搭建一个简易版的电子书。">
+<meta name="keywords" content="blog,电子书,git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git-pages">
+<meta property="og:url" content="http://daisygxl.github.io/2017/09/14/gitbook/index.html">
+<meta property="og:site_name" content="Daisy">
+<meta property="og:description" content="本文用来说明了如何从零开始基于gitpages搭建一个简易版的电子书。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-04T03:21:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git-pages">
+<meta name="twitter:description" content="本文用来说明了如何从零开始基于gitpages搭建一个简易版的电子书。">
+  
+    <link rel="alternate" href="/atom.xml" title="Daisy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Daisy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://daisygxl.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gitbook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/14/gitbook/" class="article-date">
+  <time datetime="2017-09-13T16:00:00.000Z" itemprop="datePublished">2017-09-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git-pages
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文用来说明了如何从零开始基于gitpages搭建一个简易版的电子书。</p>
+<a id="more"></a>
+<h3 id="创建本地gitbook"><a href="#创建本地gitbook" class="headerlink" title="创建本地gitbook"></a>创建本地gitbook</h3><p>第一步，先安装脚手架工具</p>
+<pre><code>npm install gitbook-cli -g</code></pre>
+然后，创建一个笔记文件夹
+<pre><code>mkdir daisy-note</code></pre>
+然后执行
+<pre><code>cd daisy-note
+gitbook init</code></pre>
+这样，可以生成这样一个gitbook项目，其中包含下面两个文件   
+<li>README.md 的内容会显示在书皮上</li>
+<li>SUMMARY.md 是目录</li>
+
+### 启动服务器，查看和编辑书籍
+<pre><code>gitbook serve</code></pre>
+这样，可以启动一个服务器，然后到 localhost:4000 端口，就可以看到这本书了。
+
+可以修改 SUMMARY.md 来添加书籍目录
+<figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="section"># Summary</span></div><div class="line"></div><div class="line"><span class="bullet">* </span>[<span class="string">Introduction</span>](<span class="link">README.md</span>)</div><div class="line"><span class="bullet">* </span>[<span class="string">第一章：git</span>](<span class="link">git/index.md</span>)</div><div class="line">  - [<span class="string">第一节：如何创建这样一篇电子书</span>](<span class="link">git/gitbook.md</span>)</div></pre></td></tr></table></figure>
+
+创建 git 文件夹，然后里面就可以写笔记了。
+
+### 托管我的 gitbook
+首先到 github.com 上创建 daisy-note 仓库。  
+为了部署方便，我们把我们的 daisy-note 的内容结构稍微调整一下，把原有的所有内容都放到 content 文件夹中，也就是有这样的目录结构
+<pre><code>➜  daisy-note ls content
+README.md  SUMMARY.md git
+➜  daisy-note</code></pre>
+然后，把当前项目变成一个 nodejs 的项目：
+<pre><code>cd daisy-note
+npm init</code></pre>
+然后，package.json 中添加这些代码：
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">"scripts": &#123;</div><div class="line"> "start": "gitbook serve ./content ./gh-pages",</div><div class="line"> "build": "gitbook build ./content ./gh-pages",</div><div class="line"> "deploy": "node ./scripts/deploy-gh-pages.js",</div><div class="line"> "publish": "npm run build &amp;&amp; npm run deploy",</div><div class="line"> "port": "lsof -i :35729"</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+
+有了上面的 npm 脚本之后，我们如果我想在本地 4000 端口查看本书，我需要运行
+<pre><code>npm start</code></pre>
+在准备上传之前，先来创建一个 .gitignore 文件，里面填写
+<pre><code>gh-pages
+node_modules</code></pre>
+然后，运行
+<pre><code>git init
+git add -A
+git commit -a -m"hello my book"
+git remote add origin git@github.com/DaisyGXL/daisy-note.git
+git push -u origin master</code></pre>
+上面这些完成后，gitbook 的原始代码就被安全的备份到 master 分支了。访问 https://github.com/DaisyGXL/daisy-note 可以看到这些内容。
+
+### 部署书籍到 gh-pages  
+这一步，可以手动做：
+<li>第一步：运行 npm run build ，来把 md 文件翻译成 html 放到 gh-pages 文件夹</li>
+<li>第二步：拷贝 gh-pages 中的所有文件，到本仓库的 gh-pages 分支，然后上传</li>
+<li>第三步：以后每次修改完都需要拷贝到 gh-pages 分支</li>
+手动做很麻烦，所以，我们采用一个 npm 包，来帮助我们完成上面的操作
+<pre><code>cd daisy-note/
+npm i --save gh-pages</code></pre>
+然后创建 my-note/scripts/deploy-gh-pages.js  
+里面的内容是：
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> ghpages = <span class="built_in">require</span>(<span class="string">'gh-pages'</span>);</div><div class="line">main();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ghpages.publish(<span class="string">'./gh-pages'</span>, <span class="built_in">console</span>.error.bind(<span class="built_in">console</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+这样，每次书稿有了修改，运行
+<pre><code>npm run publish</code></pre>
+就可以把书稿部署到 https://daisygxl.github.io/daisy-note
+
+如果本地书稿正在运行中，也可以执行下面命令将书稿进行部署
+<pre><code>npm run deploy</code></pre>
+
+<p>** ps: 本文依据happypeter老师的教程整理</p>
+<p>最近访客</p>
+<div class="ds-recent-visitors" data-num-items="39" data-avatar-size="40" id="ds-recent-visitors"></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://daisygxl.github.io/2017/09/14/gitbook/" data-id="cjc002nw80009079cvllht6z0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电子书/">电子书</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/18/boostrap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Bootstrap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/14/mocha/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mocha+supertest单元测试</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Node/">Node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/boostrap/">boostrap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/node/">node</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web-mobile/">web mobile</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node/">Node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/angular/">angular</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mocha/">mocha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/supertest/">supertest</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/单元测试/">单元测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电子书/">电子书</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/angular/" style="font-size: 10px;">angular</a> <a href="/tags/blog/" style="font-size: 15px;">blog</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/mocha/" style="font-size: 10px;">mocha</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/supertest/" style="font-size: 10px;">supertest</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/单元测试/" style="font-size: 10px;">单元测试</a> <a href="/tags/电子书/" style="font-size: 10px;">电子书</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/25/mobile/">移动端页面开发手记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/02/angular4/">Angular4</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/25/nodejs/">Nodejs</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/18/boostrap/">Bootstrap</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/14/gitbook/">git-pages</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Daisy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
