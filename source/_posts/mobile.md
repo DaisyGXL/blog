@@ -7,23 +7,21 @@ tags:
 
 ---
 
-A pixel is not a pixel is not a pixel.
+###### A pixel is not a pixel is not a pixel.
 
 <!-- more -->
-
-> 之前一直做的PC端Web开发，最近做了些移动端的页面开发，发现对一些很基础的东西都比较迷茫，因此查阅了一些资料，做一些简单的总结，希望以后可以对移动端页面开发更加得心应手。
-### 引子
-###### A pixel is not a pixel is not a pixel
 ### 一.像素
 像素是web页面布局的基础，那么到底什么才是一个像素呢？在PC开发时，我对像素的理解就是简单的1个px。
+
 那么看看百度百科的解释：
-> 像素是指由图像的小方格即所谓的像素(pixel)组成的，这些小方块都有一个明确的位置和被分配的色彩数值，而这些一小方格的颜色和位置就决定该图像所呈现出来的样子。可以将像素视为整个图像中不可分割的单位或者是元素，不可分割的意思是它不能够再切割成更小单位抑或是元素，它是以一个单一颜色的小格存在。每一个点阵图像包含了一定量的像素，这些像素决定图像在屏幕上所呈现的大小。
+像素是指由图像的小方格即所谓的像素(pixel)组成的，这些小方块都有一个明确的位置和被分配的色彩数值，而这些一小方格的颜色和位置就决定该图像所呈现出来的样子。可以将像素视为整个图像中不可分割的单位或者是元素，不可分割的意思是它不能够再切割成更小单位抑或是元素，它是以一个单一颜色的小格存在。每一个点阵图像包含了一定量的像素，这些像素决定图像在屏幕上所呈现的大小。
 
 实际上，在Web开发领域，像素有以下两层含义：
 - 设备像素：设备屏幕的物理像素，对于任何设备来讲物理像素的数量是固定的。
 ######   比如iPhone 5的分辨率640 x 1136px。。
 - CSS像素：这是一个抽象的像素概念，它是Web编程的概念，指的是CSS样式代码中使用的逻辑像素。
 ###### 在CSS规范中，长度单位可以分为两类，绝对(absolute)单位以及相对(relative)单位。px是一个相对单位，相对的是设备像素(device pixel)。
+
 如下图，是在缩放比例为1，即scale = 1的情况下，设备像素和CSS像素示意图:
 
 ![image](https://p0.meituan.net/dpnewvc/5feca8ed6f794dbadd5e43e6a2f95c586414.jpg)
@@ -76,15 +74,16 @@ document.documentElement.clientHeight
 
 ### 三、设备像素比(Device Pixel Ratio 简称：DPR)
 下面是设备像素比的计算公式（公式成立的大前提：缩放比例为1）：
-###### ==设备像素比(DPR) = 设备像素个数 / 理想视口CSS像素个数(device-width)==
+###### 设备像素比(DPR) = 设备像素个数 / 理想视口CSS像素个数(device-width)
 与理想视口一样，设备像素比对于不同的设备是不同的，但是他们都是合理的，比如早起iphone的设备像素是320px，理想视口也是320px，所以早起iphone的DPR=1，而后来iphone的设备像素为640px，理想视口还是320px，所以后来iphone的DPR=2。
 
 而对于缩放来说，**缩小放大的是 CSS像素**。
 
 ### 四.meta标签
 meta视口标签存在的主要目的是为了让布局视口和理想视口的宽度匹配，meta视口标签应该放在HTML文档的head标签内，语法如下：
-   
-==**<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">**==
+```html  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+```
 
 其中 content 属性是一个字符串值，字符串是由逗号“，”分隔的 名/值 对组成，共有5个：
 - width：设置布局视口的宽
