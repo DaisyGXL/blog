@@ -1,0 +1,1216 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,Node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Daisy" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="本文主要是一个nodejs的学习笔记。">
+<meta name="keywords" content="javascript,Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs">
+<meta property="og:url" content="http://daisygxl.github.io/2017/09/25/nodejs/index.html">
+<meta property="og:site_name" content="Daisy">
+<meta property="og:description" content="本文主要是一个nodejs的学习笔记。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-04T03:21:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs">
+<meta name="twitter:description" content="本文主要是一个nodejs的学习笔记。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://daisygxl.github.io/2017/09/25/nodejs/"/>
+
+
+<!-- 网页加载条 -->
+<script src="/js/src/pace.min.js"></script>
+  <title> Nodejs | Daisy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Daisy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      <!-- 自定义High一下的功能 -->
+      <li class="menu-item"> <a title="把这个链接拖到你的工具栏中,任何网页都可以High" href='javascript:(
+    /*
+     * Copyright (C) 2016 Never_yu (Neveryu.github.io) <React.dong.yu@gmail.com>
+     * Sina Weibo (http://weibo.com/Neveryu)
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    function go() {
+
+
+    var songs = [
+                "http://bdyun.65dj.com:8090/2015/06/28/84791C997D8C55023DAD0D5690E48C28/%D1%A6%D6%AE%C7%AB%20-%20%D1%DD%D4%B1.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-sunburst.mp3",
+                ""
+    ];
+
+    
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+
+    function S() {
+        var e = document.getElementById("audio_element_id");
+        if(e != null){
+            var index = parseInt(e.getAttribute("curSongIndex"));
+            if(index > songs.length - 2) {
+                index = 0;
+            } else {
+                index++;
+            }
+            e.setAttribute("curSongIndex", index);
+            N();
+        }
+
+        e.src = i;
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    function initAudioEle() {
+        var e = document.getElementById("audio_element_id");
+        if(e === null){
+            e = document.createElement("audio");
+            e.setAttribute("class", l);
+            e.setAttribute("curSongIndex", 0);
+            e.id = "audio_element_id";
+            e.loop = false;
+            e.bgcolor = 0;
+            e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h();
+            go();
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        }
+    }
+    
+    initAudioEle();
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+
+    var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
+    var i = songs[curSongIndex];
+    
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+
+    /* harlem-shake-style.css，替换成你的位置，也可以直接使用：//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css */
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+    })()'><i class="menu-item-icon fa fa-music fa-fw"></i>High一下</a> </li>
+      <!-- end High一下 -->
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search fa-lg"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Nodejs
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-25T00:00:00+08:00" content="2017-09-25">
+              2017-09-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">热度
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要是一个nodejs的学习笔记。</p>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NodeJs 可以解析Js代码（没有浏览器安全级别的限制）<br>提供系统级别的API：</p>
+<ul>
+<li>文件的读写</li>
+<li>进程管理</li>
+<li>网络通信</li>
+</ul>
+<p>Node.js的版本：</p>
+<ul>
+<li>偶数位为稳定版本（0.6.x 0.8.x)</li>
+<li>奇数为非稳定版本 (0.5.x 0.7.x)</li>
+</ul>
+<h1 id="在Mac环境下搭建一个简单的web服务器"><a href="#在Mac环境下搭建一个简单的web服务器" class="headerlink" title="在Mac环境下搭建一个简单的web服务器"></a>在Mac环境下搭建一个简单的web服务器</h1><p>前提：</p>
+<ul>
+<li>安装xcode <code>xcode-select –install</code></li>
+<li>检查是否已经安装 Python</li>
+<li>安装 Homebrew</li>
+<li>安装 Node</li>
+<li>创建 Demo 目录</li>
+</ul>
+<p>在以上步骤都准备好后，可以开始搭建我们最简单的Web服务器了，新建文件server.js，粘贴下面代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">    res.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;);</div><div class="line">    res.end(<span class="string">'Hello World\n'</span>);</div><div class="line">&#125;).listen(<span class="number">1337</span>,<span class="string">'127.0.0.1'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Server running at http://127.0.0.1:1337/'</span>);</div></pre></td></tr></table></figure></p>
+<p>然后，在server.js目录下运行命令，即可启动Web服务器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node serve.js</div></pre></td></tr></table></figure></p>
+<p>这样，就可以通过访问127.0.0.1:1337访问到我们的Hello World页面了。</p>
+<h1 id="模块与包管理工具"><a href="#模块与包管理工具" class="headerlink" title="模块与包管理工具"></a>模块与包管理工具</h1><p><strong>js的天生缺陷——缺少模块化管理机制</strong><br>·表现</p>
+<blockquote>
+<p>JS中容易出现变量被覆盖，方法被替代的情况（既被污染）。特别是存在依赖关系时，容易出现错误。这是因为JS缺少模块管理机制，来隔离实现各种不同功能的JS判断，避免它们相互污染。</p>
+</blockquote>
+<p>·解决</p>
+<blockquote>
+<p>经常采用命名空间的方式，把变量和函数限制在某个特定的作用域内，人肉约定一套命名规范来限制代码，保证代码安全运行。jQuery中有许多变量和方法，但是无法直接访问，必须通过jQuery，$调用各个方法。</p>
+</blockquote>
+<p><strong>Commonjs规范</strong><br>不同于jQuery，Commonjs是一套规范，约定了js如何组织，如何编写，包括包，二进制，套接字，单元测试等等。大部分标准在拟定和讨论之中，首先把执行不同任务的代码块和代码文件看为独立的模块，每一个模块都是一个单独的作用域，但不是孤立的，可能存在依赖关系。每个模块分为三个部分，定义、标识和引用。这套规范与现实产品如node.js相互影响，良性循环。</p>
+<p><strong>NodeJs的模块管理机制</strong><br>基于commonjs实现了模块管理系统。node中每一个js文件都是一个独立的模块，在其内部不需要有命名空间，不需要担心变量的污染和方法定义时的隔离。同时模块之间可以组合形成更强大的模块或功能包。npm即是用来管理各种功能包的。</p>
+<p><strong>模块的分类</strong></p>
+<ul>
+<li>模块的分类: 核心模块、文件模块、第三方模块；</li>
+<li>模块的引用：可以通过路径和模块名。模块名引用最终也会被映射为路径。包含了核心函数的核心模块会在node启动时被预先加载。</li>
+<li>文件模块、第三方模块 都是非核心模块，文件模块就是本地模块。</li>
+</ul>
+<p><strong>创建一个最简单的nodejs模块</strong><br>1.创建student.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">student</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Add student:"</span> + student);</div><div class="line">&#125;</div><div class="line"></div><div class="line">exports.add = add;</div></pre></td></tr></table></figure></p>
+<p>2.创建tescher.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">teacher</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Add teache:"</span> + teacher);</div><div class="line">&#125;</div><div class="line"></div><div class="line">exports.add = add;</div></pre></td></tr></table></figure></p>
+<p>3.创建klass.js，引入上面两个模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> student = <span class="built_in">require</span>(<span class="string">'./student'</span>);</div><div class="line"><span class="keyword">var</span> teacher= <span class="built_in">require</span>(<span class="string">'./teacher'</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params">teacherName, students</span>) </span>&#123;</div><div class="line">    teacher.add(teacherName);</div><div class="line">    students.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>) </span>&#123;</div><div class="line">        student.add(item);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">exports.add = add;</div></pre></td></tr></table></figure></p>
+<p>4.创建index.js，调用klass模块<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> klass = <span class="built_in">require</span>(<span class="string">'./klass'</span>);</div><div class="line"></div><div class="line">klass.add(<span class="string">'Lily'</span>, [<span class="string">'hoho'</span>, <span class="string">'xixi'</span>]);</div></pre></td></tr></table></figure></p>
+<p>最终，在命令行中执行<code>node index.js</code>，输出结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜  school node index.js</div><div class="line">Add teache:Lily</div><div class="line">Add student:hoho</div><div class="line">Add student:xixi</div></pre></td></tr></table></figure></p>
+<h1 id="Node的API"><a href="#Node的API" class="headerlink" title="Node的API"></a>Node的API</h1><h2 id="URL网址解析"><a href="#URL网址解析" class="headerlink" title="URL网址解析"></a>URL网址解析</h2><p><strong>url解析</strong><br><code>url.parse(urlString, 是否把query转为对象, 是否识别未知协议的url);</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&gt; url</div><div class="line">&#123; Url: [Function: Url],</div><div class="line">  parse: [Function: urlParse],</div><div class="line">  resolve: [Function: urlResolve],</div><div class="line">  resolveObject: [Function: urlResolveObject],</div><div class="line">  format: [Function: urlFormat],</div><div class="line">  URL: [Function: URL],</div><div class="line">  URLSearchParams: [Function: URLSearchParams],</div><div class="line">  domainToASCII: [Function: domainToASCII],</div><div class="line">  domainToUnicode: [Function: domainToUnicode] &#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; url.parse(&apos;http://www.imooc.com/video/6710?form=scott#loor1&apos;)</div><div class="line">Url &#123;</div><div class="line">  protocol: &apos;http:&apos;,</div><div class="line">  slashes: true,</div><div class="line">  auth: null,</div><div class="line">  host: &apos;www.imooc.com&apos;,</div><div class="line">  port: null,</div><div class="line">  hostname: &apos;www.imooc.com&apos;,</div><div class="line">  hash: &apos;#loor1&apos;,</div><div class="line">  search: &apos;?form=scott&apos;,</div><div class="line">  query: &apos;form=scott&apos;,</div><div class="line">  pathname: &apos;/video/6710&apos;,</div><div class="line">  path: &apos;/video/6710?form=scott&apos;,</div><div class="line">  href: &apos;http://www.imooc.com/video/6710?form=scott#loor1&apos; &#125;</div></pre></td></tr></table></figure>
+<p><strong>url格式化</strong><br><code>url.format({})</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; url.format(&#123;</div><div class="line">...   protocol: &apos;http:&apos;,</div><div class="line">...   slashes: true,</div><div class="line">...   auth: null,</div><div class="line">...   host: &apos;www.imooc.com&apos;,</div><div class="line">...   port: null,</div><div class="line">...   hostname: &apos;www.imooc.com&apos;,</div><div class="line">...   hash: &apos;#loor1&apos;,</div><div class="line">...   search: &apos;?form=scott&apos;,</div><div class="line">...   query: &apos;form=scott&apos;,</div><div class="line">...   pathname: &apos;/video/6710&apos;,</div><div class="line">...   path: &apos;/video/6710?form=scott&apos;,</div><div class="line">...   href: &apos;http://www.imooc.com/video/6710?form=scott#loor1&apos; &#125;)</div><div class="line">&apos;http://www.imooc.com/video/6710?form=scott#loor1&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>url拼接</strong><br><code>url.resolve(str1, str2)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; url.resolve(&apos;http://immoc.com/&apos;, &apos;/course/list&apos;)</div><div class="line">&apos;http://immoc.com/course/list&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="querystring参数解析"><a href="#querystring参数解析" class="headerlink" title="querystring参数解析"></a>querystring参数解析</h2><p><strong>参数序列化</strong><br><code>querystring.stringify({}, 参数之间的连接符-默认为&amp;, key和value之间的符号-默认=)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt; querystring.stringify(&#123;name:&apos;scott&apos;, course:[&apos;jade&apos;,&apos;node&apos;], from: &apos;&apos;&#125;)</div><div class="line">&apos;name=scott&amp;course=jade&amp;course=node&amp;from=&apos;</div><div class="line"></div><div class="line">&gt; querystring.stringify(&#123;name:&apos;scott&apos;, course:[&apos;jade&apos;,&apos;node&apos;], from: &apos;&apos;&#125;, &apos;,&apos;)</div><div class="line">&apos;name=scott,course=jade,course=node,from=&apos;</div><div class="line"></div><div class="line">&gt; querystring.stringify(&#123;name:&apos;scott&apos;, course:[&apos;jade&apos;,&apos;node&apos;], from: &apos;&apos;&#125;, &apos;,&apos;,&apos;:&apos;)</div><div class="line">&apos;name:scott,course:jade,course:node,from:&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>参数反序列化</strong><br><code>querystring.parse(‘’, 参数之间的连接符-默认为&amp;, key和value之间的符号-默认=)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; querystring.parse(&apos;name=scott&amp;course=jade&amp;course=node&amp;from=&apos;)</div><div class="line">&#123; name: &apos;scott&apos;, course: [ &apos;jade&apos;, &apos;node&apos; ], from: &apos;&apos; &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>转义</strong><br><code>querystring.escape(str)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; querystring.escape(&apos;&lt;哈哈&gt;&apos;)</div><div class="line">&apos;%3C%E5%93%88%E5%93%88%3E&apos;</div></pre></td></tr></table></figure></p>
+<p> <strong>反转义</strong><br> <code>querystring.unescape</code><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> &gt; querystring.unescape(&apos;%3C%E5%93%88%E5%93%88%3E&apos;)</div><div class="line">&apos;&lt;哈哈&gt;&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h2><p>1.http客户端发起请求，创建端口<br>2.http服务器在端口监听客户端的请求<br>3.http服务器向客户端返回状态和内容</p>
+<p><strong>浏览器发起请求到步骤</strong><br>1.Chrome搜索自身的DNS缓存<br>2.搜索操作系统的DNS缓存<br>3.读取本地的Host文件<br>4.浏览器发起一个DNS一个系统调用（向运营商发起，下面小节步骤）<br>5.浏览器获得域名对应的IP地址后，发起HTTP的三次握手<br>6.TCP/IP连接建立起来后，浏览器就可以向服务器发送HTTP请求了<br>7.服务器端接受到这个请求，根据路径参数，经过后端处理后，把处理后的一个结果的数据返回给浏览器<br>8.浏览器获取到目标网址的数据，例如返回一个HTML文件,HTML文档内的JS/CSS/图片静态资源同样也是一个个HTTP请求，也要包括上述步骤<br>9.浏览器根据获取到的资源对页面进行渲染，最终把网页呈献给用户</p>
+<p><strong>运营商的DNS服务器</strong><br>1.宽带运营商服务器查看本身缓存<br>2.运营商服务器代替浏览器发起一个迭代的DNS解析请求，运营商服务器把结果返回给操作系统内核同时缓存起来，操作系统内核把结果返回给浏览器</p>
+<p><strong>http头和正文信息</strong><br>HTTP头发送的是一些附加的信息：内容类型、服务器发送相应的日期、HTTP状态码。<br>正文就是用户提交的表单数据。</p>
+<p>1、什么是回调函数？<br>回调是异步编程时的基础，将后续逻辑封装成起始函数的参数，逐层嵌套<br>2、什么事同步/异步？<br>同步：发送方发送数据后，等待接收方发回响应以后才发下一个数据包的通讯方式<br>异步：发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式<br>3、什么事I/O?<br>文件系统里面 磁盘的写入（in）磁盘的读取（out）<br>4、什么是单线程/多线程？<br>一次只能执行一个程序叫做单线程<br>一次能执行多个程序叫做多线程<br>5、什么是阻塞/非阻塞？<br>阻塞：前一个程序未执行完就得一直等待<br>非阻塞：前一个程序未执行完时可以挂起，继续执行其他程序，等到使用时再执行<br>6、什么是事件？<br>一个触发动作（例如点击按钮）<br>7、什么是事件驱动？<br>一个触发动作引起的操作（例如点击按钮后弹出一个对话框）<br>8、什么是基于事件驱动的回调？<br>为了某个事件注册了回调函数，但是这个回调函数不是马上执行，只有当事件发生的时候，才会调用回掉函数，这种函数执行的方式叫做事件驱动~这种注册回掉就是基于事件驱动的回调，如果这些回调和异步I/O（数据写入、读取）操作相关，可以看作是基于回调的异步I/O。只不过这种回调在nodejs中是由事件来驱动的<br>9、什么是事件循环？<br>事件循环Eventloop，倘若有大量的异步操作，如一些I/O的耗时操作，甚至是一些定时器控制的延时操作，它们完成的时候都要调用相应的回调函数，而从完成一些密集的任务，而又不会阻塞整个程序执行的流程，此时需要一种机制来管理，这种机制叫做事件循环<br>总而言之，管理大量异步操作的机制叫做事件循环</p>
+<p><strong>作用域和上下文</strong><br>作用域：与调用函数,访问变量的能力有关 作用域分为：局部和全局（在局部作用域里可以访问到全局作用域的变量，但在局部作用域外面就访问不到局部作用里面所设定的变量）</p>
+<p>上下文：与this关键字有关 是调用当前可执行代码的引用<br>       this总是指向调用这个的方法的对象<br>js里的this 通常是当前函数的拥有者<br>this 是js的一个关键字 代表函数运行时自动生成的一个内部对象 只能在函数内部使用</p>
+<p>1.作为对象的方法<br>this在方法内部，this就指向调用这个方法的对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pet =  &#123;</div><div class="line">    words: <span class="string">'...'</span>,</div><div class="line">    speak: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.words);</div><div class="line">        <span class="built_in">console</span>.log(pet===<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">pet.speak();</div></pre></td></tr></table></figure></p>
+<p>2.函数的调用<br>this指向执行环境中的全局对象（浏览器-&gt;window  nodejs-&gt;global）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pets</span>(<span class="params">words</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.words = words;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.words);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>===global);</div><div class="line">&#125;</div><div class="line"></div><div class="line">pets(<span class="string">'...'</span>);</div></pre></td></tr></table></figure></p>
+<p>3.构造函数<br>this所在的方法被实例对象所调用，那么this就指向这个实例对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">petss</span>(<span class="params">words</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.words = words;</div><div class="line">    <span class="keyword">this</span>.speak = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.words);</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> petss(<span class="string">'miao'</span>);</div><div class="line">cat.speak();</div></pre></td></tr></table></figure></p>
+<p>更改上下文方法(更改this指向的内容,可方便地实现继承)：</p>
+<ul>
+<li><p>call(list);</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pet = &#123;</div><div class="line">    words: <span class="string">'...'</span>,</div><div class="line">    speak: <span class="function"><span class="keyword">function</span>(<span class="params">say</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(say + <span class="string">' '</span> + <span class="keyword">this</span>.words);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> dog = &#123;</div><div class="line">    words: <span class="string">'wang'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//通过使用call方法，将pet的上下文指向为dog内部</span></div><div class="line">pet.speak.call(dog, <span class="string">'Speak'</span>);</div></pre></td></tr></table></figure>
+</li>
+<li><p>apply(array);<br>根据call()、apply()改变上下文this指向的特性,也可以方便实现继承。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Pet</span>(<span class="params">words</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.words = words;</div><div class="line">    <span class="keyword">this</span>.speak = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.words);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">words</span>) </span>&#123;</div><div class="line">    Pet.call(<span class="keyword">this</span>, words);</div><div class="line">    <span class="comment">//Pet.apply(this. arguments);</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Dog(<span class="string">'wang'</span>);</div><div class="line">dog.speak();</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>事件Events</strong><br>a.EventEmitter支持多个事件监听，最大为10，也可以自定义最大数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//添加监听</span></div><div class="line"><span class="keyword">var</span> EventEmitter = <span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter;</div><div class="line"><span class="keyword">var</span> instance = <span class="keyword">new</span> EventEmitter();</div><div class="line">instance.on(<span class="string">'event'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">arguments</span>)</span>&#123;&#125;);</div></pre></td></tr></table></figure></p>
+<p>b.如果超过十个也能执行，不过有可能会造成内存泄漏<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//自定义最大数</span></div><div class="line"><span class="comment">//每个setMaxListeners针对的是一个特定事件：即event1,event2,... 默认最大都为10,本例为num</span></div><div class="line">instance.setMaxListeners(num);</div></pre></td></tr></table></figure></p>
+<pre><code>c.事件监听之后，需要emit(发射,发出)才会执行
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">instance.emit(<span class="string">'event'</span>,<span class="built_in">arguments</span>)</div></pre></td></tr></table></figure>
+<p>d.判断是否监听<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = instance.emit(<span class="string">'event'</span>,<span class="built_in">arguments</span>)	</div><div class="line"><span class="built_in">console</span>.log(a)   <span class="comment">//打印出来的是布尔值true or false</span></div></pre></td></tr></table></figure></p>
+<p>e.移除监听事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//移除单个事件监听</span></div><div class="line">instance.removeListener(<span class="string">'event'</span>,funcName)	<span class="comment">//移除事件需具名函数，匿名函数不行</span></div><div class="line"></div><div class="line"><span class="comment">//移除多个事件监听</span></div><div class="line">instance.removeAllListerner()	<span class="comment">//不传参表示移除所有事件监听</span></div><div class="line">instance.removeAllListerner(<span class="string">'event'</span>)	<span class="comment">//移除特定event的所有事件监听</span></div></pre></td></tr></table></figure></p>
+<p>f.计算事件监听数量<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一种</span></div><div class="line">instance.listeners(<span class="string">'event'</span>).length</div><div class="line"></div><div class="line"><span class="comment">//第二种</span></div><div class="line">EventEmitter.listenerCount(instance,<span class="string">'event'</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>Http请求的性能测试</strong><br>1.如果没有安装Apache的话，首先要安装Apache。<br>2.mac直接在终端命令行中运行命令 <code>ab -n1000 -c10 <a href="http://localhost:2017/" target="_blank" rel="external">http://localhost:2017/</a></code> 即测试本地服务的性能。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/plain'</span>&#125;);</div><div class="line">    res.write(<span class="string">'Hello nodejs'</span>);</div><div class="line">    res.end();</div><div class="line">&#125;).listen(<span class="number">2017</span>)</div></pre></td></tr></table></figure></p>
+<p>3.ab -n1000 -c10 url   即测试任意url的性能<br>-n1000 总请求数1000 默认值1<br>-c10 并发数10  默认值1<br>-t 测试的时间<br>-p post数据文件</p>
+<p>##小实践<br><strong>http小爬虫</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">var</span> url = <span class="string">'http://www.imooc.com/learn/901'</span>;</div><div class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterChapters</span>(<span class="params">html</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> $ = cheerio.load(html);</div><div class="line">    <span class="keyword">var</span> chapters = $(<span class="string">'.learnChapter'</span>);</div><div class="line">    <span class="keyword">var</span> courseData = [];</div><div class="line">	chapters.each(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> chapter = $(<span class="keyword">this</span>);</div><div class="line">		<span class="keyword">var</span> chapterTitle = chapter.find(<span class="string">'strong'</span>).text();</div><div class="line">		<span class="keyword">var</span> videos = chapter.find(<span class="string">'.video'</span>).children(<span class="string">'li'</span>);</div><div class="line">		<span class="keyword">var</span> chapterData = &#123;</div><div class="line">			chapterTitle: chapterTitle,</div><div class="line">			videos: []</div><div class="line">		&#125;</div><div class="line">        videos.each(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">			<span class="keyword">var</span> video = $(<span class="keyword">this</span>).find(<span class="string">'.studyvedio'</span>);</div><div class="line">			<span class="keyword">var</span> videoTitle = video.text();</div><div class="line">			<span class="keyword">var</span> id = video.attr(<span class="string">'href'</span>).split(<span class="string">'video/'</span>)[<span class="number">1</span>];</div><div class="line">			chapterData.videos.push(&#123;<span class="attr">title</span>: videoTitle,<span class="attr">id</span>: id&#125;);</div><div class="line">		&#125;);</div><div class="line">		courseData.push(chapterData);</div><div class="line">	&#125;);</div><div class="line">	<span class="keyword">return</span> courseData;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printCourseInfo</span>(<span class="params">courseData</span>)</span>&#123;</div><div class="line">	courseData.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> chapterTitle = item.chapterTitle;</div><div class="line">		<span class="built_in">console</span>.log(chapterTitle + <span class="string">'\n'</span>);</div><div class="line">		item.videos.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">video</span>)</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">'['</span> + video.id + <span class="string">']'</span> + video.title + <span class="string">'\n'</span>);</div><div class="line">		&#125;);</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>评论灌水</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> http =<span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">var</span> querystring =<span class="built_in">require</span>(<span class="string">'querystring'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> postData = querystring.stringify(&#123;</div><div class="line">	<span class="string">'content'</span>:<span class="string">'小路人注水测试评论'</span>,</div><div class="line">	<span class="string">'mid'</span>:<span class="number">8837</span></div><div class="line">&#125;);</div><div class="line"><span class="keyword">var</span> options=&#123;</div><div class="line">	hostname : <span class="string">'www.imooc.com'</span>,</div><div class="line">	port:<span class="number">80</span>,</div><div class="line">	path:<span class="string">'/course/docomment'</span>,</div><div class="line">	method:<span class="string">'POST'</span>,</div><div class="line">	headers:&#123;消息头&#125;);</div><div class="line"><span class="keyword">var</span> req=http.request(options ,<span class="function"><span class="keyword">function</span> (<span class="params">res</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'Status: '</span>+res.statusCode);</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'headers: '</span>+<span class="built_in">JSON</span>.stringify(res.headers));</div><div class="line">	res.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(Buffer.isBuffer(chunk));</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">typeof</span> chunk);</div><div class="line">	&#125;);</div><div class="line">	res.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'小路人注水评论完毕！'</span>);</div><div class="line">	&#125;);</div><div class="line">&#125;);</div><div class="line">req.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'Error: '</span>+e.message);</div><div class="line">&#125;);</div><div class="line">req.write(postData);</div><div class="line">req.end();</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+<blockquote class="blockquote-center" style="color: #ccc;">
+    -------------本文结束 <i class="fa fa-apple"></i> 感谢您的阅读-------------
+</blockquote>
+
+  <span id="inline-green" style="border-radius:3px;">作者</span>：<a class="link-blue" href="https://github.com/DaisyGXL" target="_blank">Daisy</a>。
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>满分是10分的话，这篇文章你给几分</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="Daisy WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="Daisy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+          
+            <a href="/tags/Node/" rel="tag"><i class="fa fa-tag"></i> Node</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/18/boostrap/" rel="next" title="Bootstrap">
+                <i class="fa fa-chevron-left"></i> Bootstrap
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/angular4/" rel="prev" title="Angular4">
+                Angular4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    <div id="gitmentContainer" style="margin-bottom: -19px;"></div>
+    <link rel="stylesheet" href="/css/gitment.css">
+    <script src="/js/src/gitment.browser.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var gitment = new powered({
+        id: 'blog-guestbook',
+        owner: 'Neveryu',
+        repo: 'Neveryu.github.io',
+        oauth: {
+          client_id: 'bbd367cf498321402719',
+          client_secret: '5d6b890500a2acaf7705495eee9c5ad12ed1f3d2',
+        },
+      })
+      gitment.render('gitmentContainer')
+    </script>
+
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Daisy" />
+          <p class="site-author-name" itemprop="name">Daisy</p>
+          <p class="site-description motion-element" itemprop="description">众中少言，无事早归</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DaisyGXL" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Mac环境下搭建一个简单的web服务器"><span class="nav-number">2.</span> <span class="nav-text">在Mac环境下搭建一个简单的web服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块与包管理工具"><span class="nav-number">3.</span> <span class="nav-text">模块与包管理工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node的API"><span class="nav-number">4.</span> <span class="nav-text">Node的API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URL网址解析"><span class="nav-number">4.1.</span> <span class="nav-text">URL网址解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#querystring参数解析"><span class="nav-number">4.2.</span> <span class="nav-text">querystring参数解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Http"><span class="nav-number">4.3.</span> <span class="nav-text">Http</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+      <!-- hack一个虚线出来 -->
+      <section style="border-top:1px dotted #ccc;height:10px;"></section>
+      <!-- weibo show -->
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5346488237&verifier=d529ff3a&dpc=1"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">您是第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>个小伙伴</span>
+  
+
+  
+    <span class="site-pv">本站总浏览<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+</div>
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+  <!-- 按需加载背景 -->
+  <!-- 按需加载背景 -->
+<!-- 识别手机或电脑的js开始 -->  
+<script type="text/javascript">   
+(function(){  
+var res = GetRequest();  
+var par = res['index'];  
+if(par!='gfan'){  
+  var ua=navigator.userAgent.toLowerCase();  
+  var contains=function (a, b){  
+      if(a.indexOf(b)!=-1){return true;}  
+  };   
+  if((contains(ua,"android") && contains(ua,"mobile"))||(contains(ua,"android") && contains(ua,"mozilla"))||(contains(ua,"android") && contains(ua,"opera"))||contains(ua,"ucweb7")||contains(ua,"iphone")){
+    return false;
+  } else {
+    $.getScript("/js/src/particle.js?v=5.0.1");
+  }
+}  
+})();  
+function GetRequest() {  
+var url = location.search;
+var theRequest = new Object();  
+if (url.indexOf("?") != -1) {  
+  var str = url.substr(1);  
+  strs = str.split("&");  
+  for(var i = 0; i < strs.length; i ++) {  
+    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+  }  
+}  
+return theRequest;  
+}  
+</script>  
+<!-- 识别手机或电脑的js结束 -->  
+  <!-- 页面点击小红心 -->
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js?v=5.0.1"></script>
+  <!-- 页面移动stars -->
+  <!-- 鼠标移动特效 -->
+<script type="text/javascript" src="/js/src/jquery-stars.js?v=5.0.1"></script>
+<script type="text/javascript">
+jQuery('body').jstars({
+	image_path: '/images',
+	image: 'candy-cane-stars.png',
+	style: 'white',
+	width: 34,
+	height: 34,
+	delay: 700,
+	frequency: 5
+});
+</script>
+  <!-- 页面 title 进入/离开 效果 -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ)"+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script>
+
+</body>
+</html>

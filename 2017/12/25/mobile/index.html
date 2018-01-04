@@ -1,0 +1,1179 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mobile,web," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Daisy" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="A pixel is not a pixel is not a pixel.">
+<meta name="keywords" content="mobile,web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端页面开发手记（一）">
+<meta property="og:url" content="http://daisygxl.github.io/2017/12/25/mobile/index.html">
+<meta property="og:site_name" content="Daisy">
+<meta property="og:description" content="A pixel is not a pixel is not a pixel.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://p0.meituan.net/dpnewvc/5feca8ed6f794dbadd5e43e6a2f95c586414.jpg">
+<meta property="og:image" content="https://p0.meituan.net/dpnewvc/3ddae5377226f4e0682519c3a3333c334368.png">
+<meta property="og:image" content="https://p1.meituan.net/dpnewvc/eb60ec0ff69b0edb5644446a2d21f61d9333.jpg">
+<meta property="og:image" content="https://p0.meituan.net/dpnewvc/e5aeb136d24d570d8a0fe38310b554f131989.png">
+<meta property="og:updated_time" content="2018-01-04T06:40:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端页面开发手记（一）">
+<meta name="twitter:description" content="A pixel is not a pixel is not a pixel.">
+<meta name="twitter:image" content="https://p0.meituan.net/dpnewvc/5feca8ed6f794dbadd5e43e6a2f95c586414.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://daisygxl.github.io/2017/12/25/mobile/"/>
+
+
+<!-- 网页加载条 -->
+<script src="/js/src/pace.min.js"></script>
+  <title> 移动端页面开发手记（一） | Daisy </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Daisy</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      <!-- 自定义High一下的功能 -->
+      <li class="menu-item"> <a title="把这个链接拖到你的工具栏中,任何网页都可以High" href='javascript:(
+    /*
+     * Copyright (C) 2016 Never_yu (Neveryu.github.io) <React.dong.yu@gmail.com>
+     * Sina Weibo (http://weibo.com/Neveryu)
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *      http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
+    function go() {
+
+
+    var songs = [
+                "http://bdyun.65dj.com:8090/2015/06/28/84791C997D8C55023DAD0D5690E48C28/%D1%A6%D6%AE%C7%AB%20-%20%D1%DD%D4%B1.mp3",
+                "http://7xoiki.com1.z0.glb.clouddn.com/Music-sunburst.mp3",
+                ""
+    ];
+
+    
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+ 
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+ 
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+ 
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+ 
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+ 
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+ 
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+ 
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+ 
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+
+    function S() {
+        var e = document.getElementById("audio_element_id");
+        if(e != null){
+            var index = parseInt(e.getAttribute("curSongIndex"));
+            if(index > songs.length - 2) {
+                index = 0;
+            } else {
+                index++;
+            }
+            e.setAttribute("curSongIndex", index);
+            N();
+        }
+
+        e.src = i;
+        e.play()
+    }
+ 
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+ 
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+ 
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    function initAudioEle() {
+        var e = document.getElementById("audio_element_id");
+        if(e === null){
+            e = document.createElement("audio");
+            e.setAttribute("class", l);
+            e.setAttribute("curSongIndex", 0);
+            e.id = "audio_element_id";
+            e.loop = false;
+            e.bgcolor = 0;
+            e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h();
+            go();
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        }
+    }
+    
+    initAudioEle();
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+
+    var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));
+    var i = songs[curSongIndex];
+    
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+
+    /* harlem-shake-style.css，替换成你的位置，也可以直接使用：//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css */
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+    })()'><i class="menu-item-icon fa fa-music fa-fw"></i>High一下</a> </li>
+      <!-- end High一下 -->
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search fa-lg"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                移动端页面开发手记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-12-25T00:00:00+08:00" content="2017-12-25">
+              2017-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/web-mobile/" itemprop="url" rel="index">
+                    <span itemprop="name">web mobile</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">热度
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h6 id="A-pixel-is-not-a-pixel-is-not-a-pixel"><a href="#A-pixel-is-not-a-pixel-is-not-a-pixel" class="headerlink" title="A pixel is not a pixel is not a pixel."></a>A pixel is not a pixel is not a pixel.</h6><a id="more"></a>
+<h3 id="一-像素"><a href="#一-像素" class="headerlink" title="一.像素"></a>一.像素</h3><p>像素是web页面布局的基础，那么到底什么才是一个像素呢？在PC开发时，我对像素的理解就是简单的1个px。</p>
+<p>那么看看百度百科的解释：<br>像素是指由图像的小方格即所谓的像素(pixel)组成的，这些小方块都有一个明确的位置和被分配的色彩数值，而这些一小方格的颜色和位置就决定该图像所呈现出来的样子。可以将像素视为整个图像中不可分割的单位或者是元素，不可分割的意思是它不能够再切割成更小单位抑或是元素，它是以一个单一颜色的小格存在。每一个点阵图像包含了一定量的像素，这些像素决定图像在屏幕上所呈现的大小。</p>
+<p>实际上，在Web开发领域，像素有以下两层含义：</p>
+<ul>
+<li>设备像素：设备屏幕的物理像素，对于任何设备来讲物理像素的数量是固定的。<h6 id="比如iPhone-5的分辨率640-x-1136px。。"><a href="#比如iPhone-5的分辨率640-x-1136px。。" class="headerlink" title="比如iPhone 5的分辨率640 x 1136px。。"></a>比如iPhone 5的分辨率640 x 1136px。。</h6></li>
+<li>CSS像素：这是一个抽象的像素概念，它是Web编程的概念，指的是CSS样式代码中使用的逻辑像素。<h6 id="在CSS规范中，长度单位可以分为两类，绝对-absolute-单位以及相对-relative-单位。px是一个相对单位，相对的是设备像素-device-pixel-。"><a href="#在CSS规范中，长度单位可以分为两类，绝对-absolute-单位以及相对-relative-单位。px是一个相对单位，相对的是设备像素-device-pixel-。" class="headerlink" title="在CSS规范中，长度单位可以分为两类，绝对(absolute)单位以及相对(relative)单位。px是一个相对单位，相对的是设备像素(device pixel)。"></a>在CSS规范中，长度单位可以分为两类，绝对(absolute)单位以及相对(relative)单位。px是一个相对单位，相对的是设备像素(device pixel)。</h6></li>
+</ul>
+<p>如下图，是在缩放比例为1，即scale = 1的情况下，设备像素和CSS像素示意图:</p>
+<p><img src="https://p0.meituan.net/dpnewvc/5feca8ed6f794dbadd5e43e6a2f95c586414.jpg" alt="image"></p>
+<p>那么再深入的考虑这样一个问题，当我给一个元素设置了 width: 200px;这条样式的时候，到底发生了什么事情？</p>
+<p>可能有人会说：“废话！元素的宽度是200px呗。”对，并没有什么问题，但是这个200px指的是什么呢？因为我们知道，对于web前端来讲像素有两层含义，那么到底是设备像素还是CSS像素？实际上我们控制的是CSS像素，因为前面提到了，CSS像素是给我们web前端开发者创造的抽象概念。所以你要记住：当你给元素设置了 width: 200px 时，这个元素的宽度跨越了200个CSS像素。但是它并不一定跨越200个设备像素，至于会跨越多少个设备像素，就取决于手机屏幕的特性和用户的缩放了,举个栗子：</p>
+<p>苹果手机的Retina视网膜屏幕，是一个高密度屏幕，它的像素密度是普通屏幕的2倍，所以当我们设置 width: 2px; 时，2个CSS像素跨越了4个设备像素如图：</p>
+<p><img src="https://p0.meituan.net/dpnewvc/3ddae5377226f4e0682519c3a3333c334368.png" alt="image"></p>
+<p>CSS像素的大小是可变的，比如用后缩放页面的时候，实际上就是在缩小或放大CSS像素，而设备像素无论大小还是数量都是不变的。</p>
+<h3 id="二-移动端的三个视图"><a href="#二-移动端的三个视图" class="headerlink" title="二.移动端的三个视图"></a>二.移动端的三个视图</h3><p>你一定写过这样一条样式： width:25%; 但是你有想过给一个元素加上这样一条样式之后发生了什么吗？25%是基于谁的25%？明白的同学可能知道了：一个块元素默认的宽度是其父元素的100%，是基于起父元素的，所以25%指的是父元素宽度的25%，所以，body元素的默认宽度是html元素宽度的100%，那么你有没有想过html元素的宽度是基于谁的呢？这个时候，就要引出一个概念：<strong>初始包含块</strong>和<strong>视口</strong>。</p>
+<p>记住一句话：视口是html的父元素，所以我们称视口为<strong>初始包含块</strong>。 这样你就明白了，<strong>html元素的百分比是基于视口的</strong>。</p>
+<h4 id="视图一：-布局视口"><a href="#视图一：-布局视口" class="headerlink" title="视图一： 布局视口"></a>视图一： 布局视口</h4><h6 id="布局视口：移动端CSS布局的依据视口，即CSS布局会根据布局视口来计算。"><a href="#布局视口：移动端CSS布局的依据视口，即CSS布局会根据布局视口来计算。" class="headerlink" title="布局视口：移动端CSS布局的依据视口，即CSS布局会根据布局视口来计算。"></a>布局视口：移动端CSS布局的依据视口，即CSS布局会根据布局视口来计算。</h6><p>在PC浏览器中，视口只有一个，并且 视口的宽度 = 浏览器窗口的宽度，但是在移动端也要根据这个来设计的话，那么PC端设计的网站在移动端看起来会很丑，因为PC端的网页宽度在800 ~ 1024个CSS像素，而手机屏幕要窄的多，这个时候再PC端25%的宽度在移动端看起来会很窄。所以，布局视口的概念产生了。</p>
+<p>也就是说，在移动端，视口和浏览器窗口将不在关联，实际上，布局视口要比浏览器窗口大的多(在手机和平板中浏览器布局视口的宽度在768~1024像素之间)，如下图（布局视口和窗口的关系）：</p>
+<p><img src="https://p1.meituan.net/dpnewvc/eb60ec0ff69b0edb5644446a2d21f61d9333.jpg" alt="image"></p>
+<p>可以通过以下JavaScript代码获取布局视口的宽度和高度：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.documentElement.clientWidth</div><div class="line"><span class="built_in">document</span>.documentElement.clientHeight</div></pre></td></tr></table></figure></p>
+<h4 id="视图二：-视觉视图"><a href="#视图二：-视觉视图" class="headerlink" title="视图二： 视觉视图"></a>视图二： 视觉视图</h4><p>视觉视口可能要更好理解一些，他就是用户正在看到网站的区域，这里不做详细说明。</p>
+<p><img src="https://p0.meituan.net/dpnewvc/e5aeb136d24d570d8a0fe38310b554f131989.png" alt="image"></p>
+<h4 id="视图三：-理想视图"><a href="#视图三：-理想视图" class="headerlink" title="视图三： 理想视图"></a>视图三： 理想视图</h4><p>我们前面提到过，布局视口的宽度一般在 680~1024像素之间，这样可以使得PC网站在手机中不被压扁，但是这并不理想，因为手机更适合窄的网站，换句话说，布局视口并不是最理想的宽度，所以，就引入了理想视口。</p>
+<p>理想视口，定义了理想视口的宽度，比如对于iphone5来讲，理想视口是320*568。但是最终作用的还是布局视口，因为我们的css是依据布局视口计算的，所以你可以这样理解理想视口：理想的布局视口。下面这段代码可以告诉手机浏览器要把布局视口设为理想视口：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<p>总结一下：</p>
+<ul>
+<li>在PC端，布局视口就是浏览器窗口</li>
+<li>在移动端，视口被分为两个：布局视口、视觉视口。</li>
+<li>移动端还有一个理想视口，它是布局视口的理想尺寸，即理想的布局视口。</li>
+<li>可以将布局视口的宽度设为理想视口</li>
+</ul>
+<h3 id="三、设备像素比-Device-Pixel-Ratio-简称：DPR"><a href="#三、设备像素比-Device-Pixel-Ratio-简称：DPR" class="headerlink" title="三、设备像素比(Device Pixel Ratio 简称：DPR)"></a>三、设备像素比(Device Pixel Ratio 简称：DPR)</h3><p>下面是设备像素比的计算公式（公式成立的大前提：缩放比例为1）：</p>
+<h6 id="设备像素比-DPR-设备像素个数-理想视口CSS像素个数-device-width"><a href="#设备像素比-DPR-设备像素个数-理想视口CSS像素个数-device-width" class="headerlink" title="设备像素比(DPR) = 设备像素个数 / 理想视口CSS像素个数(device-width)"></a>设备像素比(DPR) = 设备像素个数 / 理想视口CSS像素个数(device-width)</h6><p>与理想视口一样，设备像素比对于不同的设备是不同的，但是他们都是合理的，比如早起iphone的设备像素是320px，理想视口也是320px，所以早起iphone的DPR=1，而后来iphone的设备像素为640px，理想视口还是320px，所以后来iphone的DPR=2。</p>
+<p>而对于缩放来说，<strong>缩小放大的是 CSS像素</strong>。</p>
+<h3 id="四-meta标签"><a href="#四-meta标签" class="headerlink" title="四.meta标签"></a>四.meta标签</h3><p>meta视口标签存在的主要目的是为了让布局视口和理想视口的宽度匹配，meta视口标签应该放在HTML文档的head标签内，语法如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>其中 content 属性是一个字符串值，字符串是由逗号“，”分隔的 名/值 对组成，共有5个：</p>
+<ul>
+<li>width：设置布局视口的宽</li>
+<li>init-scale：设置页面的初始缩放程度</li>
+<li>minimum-scale：设置了页面最小缩放程度</li>
+<li>maximum-scale：设置了页面最大缩放程度</li>
+<li>user-scalable：是否允许用户对页面进行缩放操作</li>
+</ul>
+<p>上面代码的意思是，让布局视口的宽度等于理想视口的宽度，页面的初始缩放比例以及最大缩放比例都为1，且不允许用户对页面进行缩放操作。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+<blockquote class="blockquote-center" style="color: #ccc;">
+    -------------本文结束 <i class="fa fa-apple"></i> 感谢您的阅读-------------
+</blockquote>
+
+  <span id="inline-green" style="border-radius:3px;">作者</span>：<a class="link-blue" href="https://github.com/DaisyGXL" target="_blank">Daisy</a>。
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>满分是10分的话，这篇文章你给几分</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="Daisy WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="Daisy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mobile/" rel="tag"><i class="fa fa-tag"></i> mobile</a>
+          
+            <a href="/tags/web/" rel="tag"><i class="fa fa-tag"></i> web</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/02/angular4/" rel="next" title="Angular4">
+                <i class="fa fa-chevron-left"></i> Angular4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    <div id="gitmentContainer" style="margin-bottom: -19px;"></div>
+    <link rel="stylesheet" href="/css/gitment.css">
+    <script src="/js/src/gitment.browser.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var gitment = new powered({
+        id: 'blog-guestbook',
+        owner: 'Neveryu',
+        repo: 'Neveryu.github.io',
+        oauth: {
+          client_id: 'bbd367cf498321402719',
+          client_secret: '5d6b890500a2acaf7705495eee9c5ad12ed1f3d2',
+        },
+      })
+      gitment.render('gitmentContainer')
+    </script>
+
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Daisy" />
+          <p class="site-author-name" itemprop="name">Daisy</p>
+          <p class="site-description motion-element" itemprop="description">众中少言，无事早归</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DaisyGXL" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#A-pixel-is-not-a-pixel-is-not-a-pixel"><span class="nav-number">1.</span> <span class="nav-text">A pixel is not a pixel is not a pixel.</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-像素"><span class="nav-number"></span> <span class="nav-text">一.像素</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#比如iPhone-5的分辨率640-x-1136px。。"><span class="nav-number">1.</span> <span class="nav-text">比如iPhone 5的分辨率640 x 1136px。。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在CSS规范中，长度单位可以分为两类，绝对-absolute-单位以及相对-relative-单位。px是一个相对单位，相对的是设备像素-device-pixel-。"><span class="nav-number">2.</span> <span class="nav-text">在CSS规范中，长度单位可以分为两类，绝对(absolute)单位以及相对(relative)单位。px是一个相对单位，相对的是设备像素(device pixel)。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-移动端的三个视图"><span class="nav-number"></span> <span class="nav-text">二.移动端的三个视图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#视图一：-布局视口"><span class="nav-number"></span> <span class="nav-text">视图一： 布局视口</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#布局视口：移动端CSS布局的依据视口，即CSS布局会根据布局视口来计算。"><span class="nav-number">1.</span> <span class="nav-text">布局视口：移动端CSS布局的依据视口，即CSS布局会根据布局视口来计算。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视图二：-视觉视图"><span class="nav-number"></span> <span class="nav-text">视图二： 视觉视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#视图三：-理想视图"><span class="nav-number"></span> <span class="nav-text">视图三： 理想视图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、设备像素比-Device-Pixel-Ratio-简称：DPR"><span class="nav-number"></span> <span class="nav-text">三、设备像素比(Device Pixel Ratio 简称：DPR)</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#设备像素比-DPR-设备像素个数-理想视口CSS像素个数-device-width"><span class="nav-number">1.</span> <span class="nav-text">设备像素比(DPR) = 设备像素个数 / 理想视口CSS像素个数(device-width)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四-meta标签"><span class="nav-number"></span> <span class="nav-text">四.meta标签</span></a></div>
+            
+          </div>
+        </section>
+      
+      <!-- hack一个虚线出来 -->
+      <section style="border-top:1px dotted #ccc;height:10px;"></section>
+      <!-- weibo show -->
+      <iframe width="100%" height="120" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=120&fansRow=2&ptype=1&speed=0&skin=5&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=5346488237&verifier=d529ff3a&dpc=1"></iframe>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">您是第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span>个小伙伴</span>
+  
+
+  
+    <span class="site-pv">本站总浏览<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>次</span>
+  
+  
+</div>
+
+
+
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Daisy</span>
+</div>
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+       search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+    'use strict';
+    $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+            // get the contents from search data
+            isfetched = true;
+            $('.popup').detach().appendTo('.header-inner');
+            var datas = $( "entry", xmlResponse ).map(function() {
+                return {
+                    title: $( "title", this ).text(),
+                    content: $("content",this).text(),
+                    url: $( "url" , this).text()
+                };
+            }).get();
+            var $input = document.getElementById(search_id);
+            var $resultContent = document.getElementById(content_id);
+            $input.addEventListener('input', function(){
+                var matchcounts = 0;
+                var str='<ul class=\"search-result-list\">';
+                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                $resultContent.innerHTML = "";
+                if (this.value.trim().length > 1) {
+                // perform local searching
+                datas.forEach(function(data) {
+                    var isMatch = true;
+                    var content_index = [];
+                    var data_title = data.title.trim().toLowerCase();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                    var data_url = data.url;
+                    var index_title = -1;
+                    var index_content = -1;
+                    var first_occur = -1;
+                    // only match artiles with not empty titles and contents
+                    if(data_title != '' && data_content != '') {
+                        keywords.forEach(function(keyword, i) {
+                            index_title = data_title.indexOf(keyword);
+                            index_content = data_content.indexOf(keyword);
+                            if( index_title < 0 && index_content < 0 ){
+                                isMatch = false;
+                            } else {
+                                if (index_content < 0) {
+                                    index_content = 0;
+                                }
+                                if (i == 0) {
+                                    first_occur = index_content;
+                                }
+                            }
+                        });
+                    }
+                    // show search results
+                    if (isMatch) {
+                        matchcounts += 1;
+                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                        var content = data.content.trim().replace(/<[^>]+>/g,"");
+                        if (first_occur >= 0) {
+                            // cut out 100 characters
+                            var start = first_occur - 20;
+                            var end = first_occur + 80;
+                            if(start < 0){
+                                start = 0;
+                            }
+                            if(start == 0){
+                                end = 50;
+                            }
+                            if(end > content.length){
+                                end = content.length;
+                            }
+                            var match_content = content.substring(start, end);
+                            // highlight all keywords
+                            keywords.forEach(function(keyword){
+                                var regS = new RegExp(keyword, "gi");
+                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                            });
+
+                            str += "<p class=\"search-result\">" + match_content +"...</p>"
+                        }
+                        str += "</li>";
+                    }
+                })};
+                str += "</ul>";
+                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+                $resultContent.innerHTML = str;
+            });
+            proceedsearch();
+        }
+    });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+  <!-- 按需加载背景 -->
+  <!-- 按需加载背景 -->
+<!-- 识别手机或电脑的js开始 -->  
+<script type="text/javascript">   
+(function(){  
+var res = GetRequest();  
+var par = res['index'];  
+if(par!='gfan'){  
+  var ua=navigator.userAgent.toLowerCase();  
+  var contains=function (a, b){  
+      if(a.indexOf(b)!=-1){return true;}  
+  };   
+  if((contains(ua,"android") && contains(ua,"mobile"))||(contains(ua,"android") && contains(ua,"mozilla"))||(contains(ua,"android") && contains(ua,"opera"))||contains(ua,"ucweb7")||contains(ua,"iphone")){
+    return false;
+  } else {
+    $.getScript("/js/src/particle.js?v=5.0.1");
+  }
+}  
+})();  
+function GetRequest() {  
+var url = location.search;
+var theRequest = new Object();  
+if (url.indexOf("?") != -1) {  
+  var str = url.substr(1);  
+  strs = str.split("&");  
+  for(var i = 0; i < strs.length; i ++) {  
+    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+  }  
+}  
+return theRequest;  
+}  
+</script>  
+<!-- 识别手机或电脑的js结束 -->  
+  <!-- 页面点击小红心 -->
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js?v=5.0.1"></script>
+  <!-- 页面移动stars -->
+  <!-- 鼠标移动特效 -->
+<script type="text/javascript" src="/js/src/jquery-stars.js?v=5.0.1"></script>
+<script type="text/javascript">
+jQuery('body').jstars({
+	image_path: '/images',
+	image: 'candy-cane-stars.png',
+	style: 'white',
+	width: 34,
+	height: 34,
+	delay: 700,
+	frequency: 5
+});
+</script>
+  <!-- 页面 title 进入/离开 效果 -->
+<script type="text/javascript">var OriginTitile=document.title,st;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="≡[。。]≡ 回不去了吗？!",clearTimeout(st)):(document.title="(ฅ>ω<*ฅ)"+OriginTitile,st=setTimeout(function(){document.title=OriginTitile},4e3))})</script>
+
+</body>
+</html>
