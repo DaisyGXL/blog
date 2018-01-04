@@ -3116,7 +3116,6 @@ function renderFooter() {
   var container = document.createElement('div');
   container.lang = "en-US";
   container.className = 'gitment-container gitment-footer-container';
-  container.innerHTML = '\n    Powered by\n    <a class="gitment-footer-project-link" href="https://github.com/Neveryu/Neveryu.github.io/issues" target="_blank">\n      Gitment\n    </a>\n  ';
   return container;
 }
 
