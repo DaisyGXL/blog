@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Daisy">
 <meta property="og:description" content="本文用于记录平时浏览资料或者工作过程中遇到的js关键知识点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-18T03:54:25.000Z">
+<meta property="og:updated_time" content="2018-01-19T03:41:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript常见问题汇总（一）">
 <meta name="twitter:description" content="本文用于记录平时浏览资料或者工作过程中遇到的js关键知识点。">
@@ -585,6 +585,9 @@
 <li><p>函数声明<br>函数声明的函数可以在文件中任意位置调用，因为它会被提升。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+<li><p>立即执行函数<br>立即执行函数，正如它的名字，就是创建函数的同时立即执行。它没有绑定任何事件，也无需等待任何异步操作,包围它的一对括号将其转换为一个表达式，紧跟其后的一对括号调用了这个函数。显而易见，它不会被提升。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="comment">// 代码</span></div><div class="line">     <span class="comment">// ...</span></div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+</li>
 </ul>
 <h3 id="变量let-var-const"><a href="#变量let-var-const" class="headerlink" title="变量let,var,const"></a>变量let,var,const</h3><ul>
 <li>在ES6之前，只能使用var来声明变量。在一个函数体中声明的变量和函数，周围的作用域内无法访问。在块作用域if和for中声明的变量，可以在if和for的外部被访问。如果没有使用var,let或则const关键字声明的变量将会绑定到全局作用域上。</li>
@@ -592,6 +595,8 @@
 <li>使用const声明的变量，其值不可更改。准确地说它不可以被重新赋值，但是可以更改。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> tryMe = <span class="string">'initial assignment'</span>;</div><div class="line">tryMe = <span class="string">'this has been reassigned'</span>;  <span class="comment">// TypeError: Assignment to constant variable.</span></div><div class="line"><span class="comment">// You cannot reassign but you can change it…</span></div><div class="line"><span class="keyword">const</span> array = [<span class="string">'Ted'</span>, <span class="string">'is'</span>, <span class="string">'awesome!'</span>];</div><div class="line">array[<span class="number">0</span>] = <span class="string">'Barney'</span>;</div><div class="line">array[<span class="number">3</span>] = <span class="string">'Suit up!'</span>;</div><div class="line"><span class="built_in">console</span>.log(array);     <span class="comment">// [“Barney”, “is”, “awesome!”, “Suit up!”]</span></div><div class="line"><span class="keyword">const</span> airplane = &#123;&#125;;</div><div class="line">airplane.wings = <span class="number">2</span>;</div><div class="line">airplane.passengers = <span class="number">200</span>;</div><div class="line"><span class="built_in">console</span>.log(airplane);   <span class="comment">// &#123;passengers: 200, wings: 2&#125;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>在前端面试中，闭包基本上是一个必问基础知识，然而一直以来我对闭包的理解都处于表面。<br>那么什么是闭包呢？<br>对于闭包(closure)，当外部函数返回之后，内部函数依然可以访问外部函数的变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> N = <span class="number">0</span>; <span class="comment">// N是f1中的局部变量</span></div><div class="line"></div><div class="line">    <span class="comment">// 内部函数f2中使用了外部函数f1中的变量N</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        N += <span class="number">1</span>;</div><div class="line">        <span class="built_in">console</span>.log(N);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> f2;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> result = f1();</div><div class="line"></div><div class="line">result(); <span class="comment">// 输出1</span></div><div class="line">result(); <span class="comment">// 输出2</span></div><div class="line">result(); <span class="comment">// 输出3</span></div></pre></td></tr></table></figure></p>
+<p>代码中，外部函数f1只执行了一次，变量N设为0，并将内部函数f2赋值给了变量result。由于外部函数f1已经执行完毕，其内部变量N应该在内存中被清除，然而事实并不是这样：我们每次调用result的时候，发现变量N一直在内存中，并且在累加。为什么呢？这就是闭包的神奇之处了！</p>
 
       
     </div>
@@ -658,6 +663,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/16/chromweixin/" rel="prev" title="Chrome在电脑上模拟微信浏览器">
+                Chrome在电脑上模拟微信浏览器 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -765,7 +774,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -773,7 +782,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -782,7 +791,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -828,7 +837,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型和类型转换"><span class="nav-number">1.</span> <span class="nav-text">类型和类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Null-vs-undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Null vs. undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换"><span class="nav-number">1.2.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-amp-Number之间的转换"><span class="nav-number">1.3.</span> <span class="nav-text">String & Number之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vs"><span class="nav-number">1.4.</span> <span class="nav-text">== vs. ===</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#值-vs-引用"><span class="nav-number">1.5.</span> <span class="nav-text">值 vs. 引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域-Scope"><span class="nav-number">2.</span> <span class="nav-text">作用域(Scope)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提升"><span class="nav-number">3.</span> <span class="nav-text">提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数表达式和函数声明"><span class="nav-number">3.1.</span> <span class="nav-text">函数表达式和函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量let-var-const"><span class="nav-number">3.2.</span> <span class="nav-text">变量let,var,const</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型和类型转换"><span class="nav-number">1.</span> <span class="nav-text">类型和类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Null-vs-undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Null vs. undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐式转换"><span class="nav-number">1.2.</span> <span class="nav-text">隐式转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String-amp-Number之间的转换"><span class="nav-number">1.3.</span> <span class="nav-text">String & Number之间的转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vs"><span class="nav-number">1.4.</span> <span class="nav-text">== vs. ===</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#值-vs-引用"><span class="nav-number">1.5.</span> <span class="nav-text">值 vs. 引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域-Scope"><span class="nav-number">2.</span> <span class="nav-text">作用域(Scope)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提升"><span class="nav-number">3.</span> <span class="nav-text">提升</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数表达式和函数声明"><span class="nav-number">3.1.</span> <span class="nav-text">函数表达式和函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量let-var-const"><span class="nav-number">3.2.</span> <span class="nav-text">变量let,var,const</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a></li></ol></div>
             
           </div>
         </section>

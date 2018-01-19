@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT, Neveryu, Never_yu, Blog, Node.js, Git, PHP, JAVA, JAVASCRIPT, HTML, CSS, jQuery, Angular, Vue, React" />
+  <meta name="keywords" content="chrome,调试," />
 
 
 
@@ -86,16 +86,18 @@
 
 
 
-<meta name="description" content="众中少言，无事早归">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Daisy">
-<meta property="og:url" content="http://daisygxl.github.io/tags/布局/index.html">
+<meta name="description" content="最近做了微信商城的开发，涉及到在微信内部的页面跳转问题，用此方法调试。">
+<meta name="keywords" content="chrome,调试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome在电脑上模拟微信浏览器">
+<meta property="og:url" content="http://daisygxl.github.io/2018/01/16/chromweixin/index.html">
 <meta property="og:site_name" content="Daisy">
-<meta property="og:description" content="众中少言，无事早归">
+<meta property="og:description" content="最近做了微信商城的开发，涉及到在微信内部的页面跳转问题，用此方法调试。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-19T04:36:39.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Daisy">
-<meta name="twitter:description" content="众中少言，无事早归">
+<meta name="twitter:title" content="Chrome在电脑上模拟微信浏览器">
+<meta name="twitter:description" content="最近做了微信商城的开发，涉及到在微信内部的页面跳转问题，用此方法调试。">
 
 
 
@@ -116,12 +118,12 @@
 
 
 
-  <link rel="canonical" href="http://daisygxl.github.io/tags/布局/"/>
+  <link rel="canonical" href="http://daisygxl.github.io/2018/01/16/chromweixin/"/>
 
 
 <!-- 网页加载条 -->
 <script src="/js/src/pace.min.js"></script>
-  <title> 标签: 布局 | Daisy </title>
+  <title> Chrome在电脑上模拟微信浏览器 | Daisy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -142,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -471,46 +473,205 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        布局
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Chrome在电脑上模拟微信浏览器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-16T00:00:00+08:00" content="2018-01-16">
+              2018-01-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/chrome/" itemprop="url" rel="index">
+                    <span itemprop="name">chrome</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv">热度
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>℃
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>最近做了微信商城的开发，涉及到在微信内部的页面跳转问题，用此方法调试。</p>
+<a id="more"></a>
+<p>1、先了解安卓微信和Ios微信的UA（User agent：用户代理）</p>
+<p>安卓微信UA： mozilla/5.0 (linux; u; android 4.1.2; zh-cn; mi-one plus build/jzo54k) applewebkit/534.30 (khtml, like gecko) version/4.0 mobile safari/534.30 micromessenger/5.0.1.352  </p>
+<p>2、打开Chrome，F12打开开发人员工具，点击菜单按钮—–More Tools —–Network condition打开Network condition窗口</p>
+<p>3、 User agent选项，选择Custom（自定义），然后在下面的文本框中输入Android或者Ios的UA就可以了</p>
+<p>4、测试一下成果如何<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">window.onload = function() &#123;</div><div class="line">    isWeixinBrowser();</div><div class="line">&#125;</div><div class="line">//判断是否微信浏览器</div><div class="line">function isWeixinBrowser() &#123;  </div><div class="line">    var ua = navigator.userAgent.toLowerCase();  </div><div class="line">    var result = (/micromessenger/.test(ua)) ? true : false;</div><div class="line">    if (result) &#123;</div><div class="line">        console.log(&apos;你正在访问微信浏览器&apos;);</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        console.log(&apos;你访问的不是微信浏览器&apos;);</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/01/09/flex/" itemprop="url">
-              
-                <span itemprop="name">Flex实现五种常用布局</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-09T00:00:00+08:00"
-              content="2018-01-09" >
-          01-09
-        </time>
-      </div>
+<blockquote class="blockquote-center" style="color: #ccc;">
+    -------------本文结束 <i class="fa fa-apple"></i> 感谢您的阅读-------------
+</blockquote>
 
-    </header>
+  <span id="inline-green" style="border-radius:3px;">作者</span>：<a class="link-blue" href="https://github.com/DaisyGXL" target="_blank">Daisy</a>。
+
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>满分是10分的话，这篇文章你给几分</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.png" alt="Daisy WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.png" alt="Daisy Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/chrome/" rel="tag"><i class="fa fa-tag"></i> chrome</a>
+          
+            <a href="/tags/调试/" rel="tag"><i class="fa fa-tag"></i> 调试</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/16/javascript/" rel="next" title="javascript常见问题汇总（一）">
+                <i class="fa fa-chevron-left"></i> javascript常见问题汇总（一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -518,6 +679,27 @@
 
 
           
+  <div class="comments" id="comments">
+    <div id="gitmentContainer" style="margin-bottom: -19px;"></div>
+    <link rel="stylesheet" href="/css/gitment.css">
+    <script src="/js/src/gitment.browser.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var gitment = new Gitment({
+        owner: 'daisygxl',
+        repo: 'daisygxl.github.io',
+        oauth: {
+          client_id: '180687caf46b105720ca',
+          client_secret: '4846ba3cc2d5f37a8c41da8b998e9e5d5e315ad7',
+        },
+      })
+      gitment.render('gitmentContainer')
+    </script>
+
+    
+        <div id="gitment-container"></div>
+    
+  </div>
+
 
         </div>
         
@@ -537,8 +719,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -605,6 +796,17 @@
         
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
       <!-- hack一个虚线出来 -->
       <section style="border-top:1px dotted #ccc;height:10px;"></section>
@@ -714,6 +916,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
