@@ -550,7 +550,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -928,7 +928,28 @@ jQuery('body').jstars({
 
 </body>
 </html>
-"/js/src/jquery-stars.js?v=5.0.1"></script>
+
+})();  
+function GetRequest() {  
+var url = location.search;
+var theRequest = new Object();  
+if (url.indexOf("?") != -1) {  
+  var str = url.substr(1);  
+  strs = str.split("&");  
+  for(var i = 0; i < strs.length; i ++) {  
+    theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+  }  
+}  
+return theRequest;  
+}  
+</script>  
+<!-- 识别手机或电脑的js结束 -->  
+  <!-- 页面点击小红心 -->
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js?v=5.0.1"></script>
+  <!-- 页面移动stars -->
+  <!-- 鼠标移动特效 -->
+<script type="text/javascript" src="/js/src/jquery-stars.js?v=5.0.1"></script>
 <script type="text/javascript">
 jQuery('body').jstars({
 	image_path: '/images',
