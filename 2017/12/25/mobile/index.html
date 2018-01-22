@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://p0.meituan.net/dpnewvc/3ddae5377226f4e0682519c3a3333c334368.png">
 <meta property="og:image" content="https://p1.meituan.net/dpnewvc/eb60ec0ff69b0edb5644446a2d21f61d9333.jpg">
 <meta property="og:image" content="https://p0.meituan.net/dpnewvc/e5aeb136d24d570d8a0fe38310b554f131989.png">
-<meta property="og:updated_time" content="2018-01-22T07:49:00.000Z">
+<meta property="og:updated_time" content="2018-01-22T07:56:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端页面开发手记（一）">
 <meta name="twitter:description" content="A pixel is not a pixel is not a pixel.">
@@ -586,8 +586,8 @@
 <p>可以通过以下JavaScript代码获取布局视口的宽度和高度：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.documentElement.clientWidth</div><div class="line"><span class="built_in">document</span>.documentElement.clientHeight</div></pre></td></tr></table></figure></p>
 <h4 id="视图二：-视觉视图"><a href="#视图二：-视觉视图" class="headerlink" title="视图二： 视觉视图"></a>视图二： 视觉视图</h4><p><img src="https://p0.meituan.net/dpnewvc/e5aeb136d24d570d8a0fe38310b554f131989.png" alt="image"><br>对于视觉视口来说，这个东西是呈现给用户的，它是用户看到网页区域内CSS像素的数量。由于用户可以自行进行缩放控制，所以这个视口并不是开发者需要重点关注的。<br>值得注意的是，在移动端缩放不会改变布局视口的宽度，当缩小的时候，屏幕覆盖的css像素变多，视觉视口变大，反之亦然。<br>而在PC端，缩放对应布局宽度和视觉窗口宽度都是联动的。而浏览器宽度本身是固定的，无论怎么缩放都不受影响。<br>如果对上面的宽度还是很乱，那么这里有一个表格可以帮助你理清思路。<br>以下表格横向都以浏览器窗口的宽度作为基准：</p>
 <ul>
-<li>PC端<br>状态 | 布局视口 | 视觉视口 | 浏览器窗口（基准）<br>—|—|—|—<br>默认 | 相等 | 相等 | -<br>放大 | 变小 | 变小 | -<br>缩小 | 变大 | 变大 | -</li>
-<li>移动端<br>状态 | 布局视口 | 视觉视口 | 浏览器窗口（基准）<br>—|—|—|—<br>默认 | 偏大 | 相等 | -<br>放大 | 不变 | 变小 | -<br>缩小 | 不变 | 变大 | -</li>
+<li>PC端<br>状态 | 布局视口 | 视觉视口 | 浏览器窗口（基准）<br>—–|—–|—–|—–<br>默认 | 相等 | 相等 | -<br>放大 | 变小 | 变小 | -<br>缩小 | 变大 | 变大 | -</li>
+<li>移动端<br>状态 | 布局视口 | 视觉视口 | 浏览器窗口（基准）<br>—–|—–|—–|—–<br>默认 | 偏大 | 相等 | -<br>放大 | 不变 | 变小 | -<br>缩小 | 不变 | 变大 | -</li>
 </ul>
 <h4 id="视图三：-理想视图"><a href="#视图三：-理想视图" class="headerlink" title="视图三： 理想视图"></a>视图三： 理想视图</h4><p>我们前面提到过，布局视口的宽度一般在 680~1024像素之间，这样可以使得PC网站在手机中不被压扁，但是这并不理想，因为手机更适合窄的网站，换句话说，布局视口并不是最理想的宽度，所以，就引入了理想视口。</p>
 <p>理想视口，定义了理想视口的宽度，比如对于iphone5来讲，理想视口是320*568。但是最终作用的还是布局视口，因为我们的css是依据布局视口计算的，所以你可以这样理解理想视口：理想的布局视口。下面这段代码可以告诉手机浏览器要把布局视口设为理想视口：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
