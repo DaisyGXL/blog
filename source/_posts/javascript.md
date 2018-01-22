@@ -175,6 +175,7 @@ function sum(a, b) {
 ```
 - 立即执行函数
 立即执行函数，正如它的名字，就是创建函数的同时立即执行。它没有绑定任何事件，也无需等待任何异步操作,包围它的一对括号将其转换为一个表达式，紧跟其后的一对括号调用了这个函数。显而易见，它不会被提升。
+立即执行函数可以用来实现模块化。
 ```javascript
 (function() {
      // 代码
@@ -224,4 +225,69 @@ result(); // 输出2
 result(); // 输出3
 ```
 代码中，外部函数f1只执行了一次，变量N设为0，并将内部函数f2赋值给了变量result。由于外部函数f1已经执行完毕，其内部变量N应该在内存中被清除，然而事实并不是这样：我们每次调用result的时候，发现变量N一直在内存中，并且在累加。为什么呢？这就是闭包的神奇之处了！
+
+### 使用闭包定义私有变量
+```javascript
+function Product() {
+
+	var name;
+
+    this.setName = function(value) {
+        name = value;
+    };
+
+    this.getName = function() {
+        return name;
+    };
+}
+
+var p = new Product();
+p.setName("hello");
+
+console.log(p.name); // 输出undefined
+console.log(p.getName()); // 输出hello
+```
+对象p的的name属性为私有属性，使用p.name不能直接访问。
+
+## 继承
+JavaScript仅支持通过prototype属性进行继承属性和方法。每个JavaScript构造函数都有一个prototype属性，用于设置所有实例对象需要共享的属性和方法。
+```javascript
+function Rectangle(x, y)
+{
+    this._length = x;
+    this._breadth = y;
+}
+
+Rectangle.prototype.getDimensions = function()
+{
+    return {
+        length: this._length,
+        breadth: this._breadth
+    };
+};
+
+var x = new Rectangle(3, 4);
+var y = new Rectangle(4, 3);
+
+console.log(x.getDimensions()); // { length: 3, breadth: 4 }
+console.log(y.getDimensions()); // { length: 4, breadth: 3 }
+```
+
+## 柯里化
+我们可以一次性传入多个参数调用它；也可以只传入一部分参数来调用它，让它返回一个函数去处理剩下的参数。
+```javascript
+var add = function(x) {
+    return function(y) {
+        return x + y;
+    };
+};
+
+console.log(add(1)(1)); // 输出2
+
+var add1 = add(1);
+console.log(add1(1)); // 输出2
+
+var add10 = add(10);
+console.log(add10(1)); // 输出11
+```
 
